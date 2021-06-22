@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.pojo.SoTietKiem" table="sotietkiem" schema="quanlystk">
+        <id name="maSo">
+            <column name="MaSo" sql-type="int"/>
+        </id>
+        <property name="ngayMoSo">
+            <column name="NgayMoSo" sql-type="date"/>
+        </property>
+        <property name="soTienGui">
+            <column name="SoTienGui" sql-type="decimal(30,2)" precision="30" scale="2"/>
+        </property>
+        <many-to-one class="model.pojo.LoaiSTK" name="loaiSo"
+                     fetch="select">
+            <column length="11" name="loaiso" />
+        </many-to-one>
+        <many-to-one class="model.pojo.NguoiDung" name="maND"
+                     fetch="select">
+            <column length="11" name="MaND" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
