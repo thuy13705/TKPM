@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.pojo.NguoiDung" table="nguoidung" schema="quanlystk">
+        <id name="maNd">
+            <column name="MaND" sql-type="int"/>
+        </id>
+        <property name="tenNd">
+            <column name="TenND" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="diaChi">
+            <column name="DiaChi" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="cmnd">
+            <column name="CMND" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="sdt">
+            <column name="SDT" sql-type="varchar(15)" length="15"/>
+        </property>
+        <property name="username">
+            <column name="Username" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="password">
+            <column name="Password" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="loaiNd">
+            <column name="LoaiND" sql-type="int"/>
+        </property>
+    </class>
+</hibernate-mapping>
