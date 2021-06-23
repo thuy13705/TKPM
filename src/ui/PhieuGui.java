@@ -11,7 +11,7 @@ public class PhieuGui extends javax.swing.JDialog {
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
@@ -123,7 +123,7 @@ public class PhieuGui extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
 
     public static void main(String args[]) {
