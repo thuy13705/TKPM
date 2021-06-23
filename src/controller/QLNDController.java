@@ -29,13 +29,16 @@ public class QLNDController {
            NguoiDung nguoiDung=quanLyDSNguoiDung.themND();
            if (nguoiDung!=null){
                boolean check=NguoiDungDAO.ThemND(nguoiDung);
-               if (check==true)
+               if (check==true){
+                   List<NguoiDung> list=NguoiDungDAO.layDSNguoiDung();
+                   quanLyDSNguoiDung.showDS(list);
                    quanLyDSNguoiDung.showMessage("Thêm thành công.");
+               }
                else
                    quanLyDSNguoiDung.showMessage("Thêm thất bại");
            }
            else
-               quanLyDSNguoiDung.showMessage("Nguoi dùng không tồn tại.");
+               quanLyDSNguoiDung.showMessage("Người dùng không tồn tại.");
         }
     }
 
@@ -46,13 +49,16 @@ public class QLNDController {
             if (nguoiDung!=null){
                 nguoiDung=quanLyDSNguoiDung.suaND(nguoiDung);
                 boolean check=NguoiDungDAO.capNhatND(nguoiDung);
-                if (check==true)
+                if (check==true){
+                    List<NguoiDung> list=NguoiDungDAO.layDSNguoiDung();
+                    quanLyDSNguoiDung.showDS(list);
                     quanLyDSNguoiDung.showMessage("Cập nhật thành công.");
+                }
                 else
                     quanLyDSNguoiDung.showMessage("Cập nhật thất bại");
             }
             else
-                quanLyDSNguoiDung.showMessage("Nguoi dùng không tồn tại.");
+                quanLyDSNguoiDung.showMessage("Người dùng không tồn tại.");
         }
     }
 
@@ -64,14 +70,17 @@ public class QLNDController {
                 int kq=quanLyDSNguoiDung.xoaND();
                 if (kq==0){
                     boolean check=NguoiDungDAO.xoaND(nguoiDung.getMaNd());
-                    if (check==true)
+                    if (check==true){
+                        List<NguoiDung> list=NguoiDungDAO.layDSNguoiDung();
+                        quanLyDSNguoiDung.showDS(list);
                         quanLyDSNguoiDung.showMessage("Xoá thành công.");
+                    }
                     else
-                        quanLyDSNguoiDung.showMessage("Xoá nhật thất bại");
+                        quanLyDSNguoiDung.showMessage("Xoá thất bại");
                 }
             }
             else
-                quanLyDSNguoiDung.showMessage("Nguoi dùng không tồn tại.");
+                quanLyDSNguoiDung.showMessage("Người dùng không tồn tại.");
         }
     }
 }

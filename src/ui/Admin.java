@@ -170,15 +170,6 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
         jpnView.repaint();
     }
 
-    private javax.swing.JButton btnDangXuat;
-    private javax.swing.JButton btnQuanLyNguoiDung;
-    private javax.swing.JButton btnTTCN;
-    private javax.swing.JButton btnThongBao;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel jpnView;
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -191,4 +182,13 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
     public void qlngListener(ActionListener listener){
         btnQuanLyNguoiDung.addActionListener(listener);
     }
+    private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnQuanLyNguoiDung;
+    private javax.swing.JButton btnTTCN;
+    private javax.swing.JButton btnThongBao;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel jpnView;
+
 }

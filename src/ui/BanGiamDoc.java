@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class BanGiamDoc extends javax.swing.JFrame {
+public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
 
 
     public BanGiamDoc() {
@@ -42,15 +42,7 @@ public class BanGiamDoc extends javax.swing.JFrame {
         btnTTCN.setToolTipText("");
         btnTTCN.setHorizontalAlignment(SwingConstants.LEFT);
         btnTTCN.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnTTCN.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent evt) {
-//                jpnView.removeAll();
-//                jpnView.setLayout(new BorderLayout());
-//                jpnView.add(new ThongTinCaNhan());
-//                jpnView.validate();
-//                jpnView.repaint();
-            }
-        });
+
         btnBaoCao.setBackground(new Color(54, 33, 89));
         btnBaoCao.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnBaoCao.setForeground(new Color(255, 255, 255));
@@ -59,15 +51,7 @@ public class BanGiamDoc extends javax.swing.JFrame {
         btnBaoCao.setToolTipText("");
         btnBaoCao.setHorizontalAlignment(SwingConstants.LEFT);
         btnBaoCao.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnBaoCao.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                //jpnView.add(new Ba());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
+
 
         btnDangXuat.setBackground(new Color(54, 33, 89));
         btnDangXuat.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
@@ -99,15 +83,7 @@ public class BanGiamDoc extends javax.swing.JFrame {
         btnThongBao.setToolTipText("");
         btnThongBao.setHorizontalAlignment(SwingConstants.LEFT);
         btnThongBao.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnThongBao.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new QuanLyQuyDinh());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
+
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -172,9 +148,30 @@ public class BanGiamDoc extends javax.swing.JFrame {
         pack();
     }
 
+    public void showMessage(String msg){
+        JOptionPane.showMessageDialog(this,msg);
+    }
 
+    public void showPanel(JPanel panel){
+        jpnView.removeAll();
+        jpnView.setLayout(new BorderLayout());
+        jpnView.add(panel);
+        jpnView.validate();
+        jpnView.repaint();
+    }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
+    }
+
+    public void getTTCNListener(ActionListener listener){
+        btnTTCN.addActionListener(listener);
+    }
+
+    public void baoCaoListener(ActionListener listener){
+        btnBaoCao.addActionListener(listener);
+    }
 
     private javax.swing.JButton btnBaoCao;
     private javax.swing.JButton btnDangXuat;
