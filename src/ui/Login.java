@@ -3,7 +3,7 @@ package ui;
 
 
 import model.pojo.NguoiDung;
-import org.mindrot.jbcrypt.BCrypt;
+//import org.mindrot.jbcrypt.BCrypt;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

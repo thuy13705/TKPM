@@ -127,21 +127,23 @@ public class NguoiDungDAO {
     }
 
     public static int layMaxID() {
-        int max=0;
+        int max = 0;
+        List<NguoiDung> list1 = null;
         SessionFactory factory= HibernateUtil.getSessionFactory();
         Session session=factory.openSession();
         try {
+            String hql = "select max(nd.maNd) from NguoiDung nd";
+            Query query = session.createQuery(hql);
+            Object objects = (Object) ((org.hibernate.query.Query<?>) query).uniqueResult();
+            max = (int) objects;
 
-            Query query = session.createQuery("select max(maNd) from NguoiDung");
-            List<NguoiDung> list1= (List<NguoiDung>) ((org.hibernate.query.Query<?>) query).list();
-            if (list1.size()!=0)
-                max=list1.get(0).getMaNd();
         } catch (HibernateException ex) {
             //Log the exception
             System.err.println(ex);
         } finally {
             session.close();
         }
+
         return max;
     }
 }
