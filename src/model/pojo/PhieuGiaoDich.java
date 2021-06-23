@@ -9,17 +9,8 @@ public class PhieuGiaoDich {
     private Date ngayGiaoDich;
     private BigDecimal soTien;
     private int loaiPhieu;
-    private NguoiDung nguoiGiaoDich;
-    private NguoiDung maND;
     private SoTietKiem maSo;
-
-    public SoTietKiem getMaSo() {
-        return maSo;
-    }
-
-    public void setMaSo(SoTietKiem maSo) {
-        this.maSo = maSo;
-    }
+    private NguoiDung maND;
 
     public NguoiDung getMaND() {
         return maND;
@@ -29,13 +20,15 @@ public class PhieuGiaoDich {
         this.maND = maND;
     }
 
-    public NguoiDung getNguoiGiaoDich() {
-        return nguoiGiaoDich;
+    public SoTietKiem getMaSo() {
+        return maSo;
     }
 
-    public void setNguoiGiaoDich(NguoiDung nguoiGiaoDich) {
-        this.nguoiGiaoDich = nguoiGiaoDich;
+    public void setMaSo(SoTietKiem maSo) {
+        this.maSo = maSo;
     }
+
+
 
     public int getMaPhieu() {
         return maPhieu;

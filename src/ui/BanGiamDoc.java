@@ -44,11 +44,11 @@ public class BanGiamDoc extends javax.swing.JFrame {
         btnTTCN.setHorizontalTextPosition(SwingConstants.RIGHT);
         btnTTCN.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new ThongTinCaNhan());
-                jpnView.validate();
-                jpnView.repaint();
+//                jpnView.removeAll();
+//                jpnView.setLayout(new BorderLayout());
+//                jpnView.add(new ThongTinCaNhan());
+//                jpnView.validate();
+//                jpnView.repaint();
             }
         });
         btnBaoCao.setBackground(new Color(54, 33, 89));

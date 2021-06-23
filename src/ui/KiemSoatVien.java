@@ -44,11 +44,11 @@ public class KiemSoatVien extends javax.swing.JFrame {
         btnTTCN.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnTTCN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new ThongTinCaNhan());
-                jpnView.validate();
-                jpnView.repaint();
+//                jpnView.removeAll();
+//                jpnView.setLayout(new BorderLayout());
+//                jpnView.add(new ThongTinCaNhan());
+//                jpnView.validate();
+//                jpnView.repaint();
             }
         });
 

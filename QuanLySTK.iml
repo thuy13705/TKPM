@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
@@ -12,7 +11,6 @@
       </configuration>
     </facet>
   </component>
-
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -20,8 +18,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-
     <orderEntry type="library" name="Hibernate 5.4.11-5.4.11" level="project" />
-
+    <orderEntry type="library" name="jbcrypt-0.4" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.24" level="project" />
   </component>
 </module>

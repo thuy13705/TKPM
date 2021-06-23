@@ -44,6 +44,27 @@ public class NguoiDungDAO {
         return nguoiDung;
     }
 
+    public static NguoiDung layNguoiDungUser(String user) {
+        NguoiDung nguoiDung = null;
+        List<NguoiDung> ds=null;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+            String hql = "from NguoiDung where username=:user";
+            Query query = session.createQuery(hql);
+            query.setParameter("user",user);
+            ds = (List<NguoiDung>) ((org.hibernate.query.Query<?>) query).list();
+            if (ds.size()!=0)
+                nguoiDung=ds.get(0);
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return nguoiDung;
+    }
+
     public static boolean ThemND(NguoiDung nguoiDung) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         if (NguoiDungDAO.layNguoiDungID(nguoiDung.getMaNd())!=null) {
@@ -105,4 +126,22 @@ public class NguoiDungDAO {
         return true;
     }
 
+    public static int layMaxID() {
+        int max=0;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+
+            Query query = session.createQuery("select max(maNd) from NguoiDung");
+            List<NguoiDung> list1= (List<NguoiDung>) ((org.hibernate.query.Query<?>) query).list();
+            if (list1.size()!=0)
+                max=list1.get(0).getMaNd();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return max;
+    }
 }
