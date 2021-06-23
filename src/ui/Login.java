@@ -2,9 +2,14 @@
 package ui;
 
 
+import model.pojo.NguoiDung;
+//import org.mindrot.jbcrypt.BCrypt;
 
-public class Login extends javax.swing.JFrame {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+public class Login extends javax.swing.JFrame implements ActionListener {
 
     public Login() {
         initComponents();
@@ -91,10 +96,24 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
-
         pack();
     }
 
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
+    public NguoiDung getND() {
+        String pass=String.copyValueOf(txtMatKhau.getPassword());
+        return new NguoiDung(txtTen.getText(),pass);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+    }
+
+    public void addLoginListener(ActionListener listener) {
+        btnDangNhap.addActionListener(listener);
+    }
 
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JLabel jLabel1;

@@ -2,8 +2,10 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Admin extends javax.swing.JFrame {
+public class Admin extends javax.swing.JFrame implements ActionListener {
 
 
     public Admin() {
@@ -39,15 +41,6 @@ public class Admin extends javax.swing.JFrame {
         btnQuanLyNguoiDung.setToolTipText("");
         btnQuanLyNguoiDung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQuanLyNguoiDung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnQuanLyNguoiDung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new QuanLyDSNguoiDung());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
 
         btnTTCN.setBackground(new java.awt.Color(54, 33, 89));
         btnTTCN.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -57,15 +50,6 @@ public class Admin extends javax.swing.JFrame {
         btnTTCN.setToolTipText("");
         btnTTCN.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTTCN.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnTTCN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new ThongTinCaNhan());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
 
         btnThongBao.setBackground(new java.awt.Color(54, 33, 89));
         btnThongBao.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -174,7 +158,30 @@ public class Admin extends javax.swing.JFrame {
         pack();
     }
 
+    public void showMessage(String msg){
+        JOptionPane.showMessageDialog(this,msg);
+    }
 
+    public void showPanel(JPanel panel){
+        jpnView.removeAll();
+        jpnView.setLayout(new BorderLayout());
+        jpnView.add(panel);
+        jpnView.validate();
+        jpnView.repaint();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void getTTCNListener(ActionListener listener){
+        btnTTCN.addActionListener(listener);
+    }
+
+    public void qlngListener(ActionListener listener){
+        btnQuanLyNguoiDung.addActionListener(listener);
+    }
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnQuanLyNguoiDung;
     private javax.swing.JButton btnTTCN;
