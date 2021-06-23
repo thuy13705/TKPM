@@ -35,6 +35,8 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         jLabel1.setText("BAN GIÁM ĐỐC");
 
         btnTTCN.setBackground(new Color(54, 33, 89));
+        btnTTCN.setOpaque(true);
+        btnTTCN.setBorderPainted(false);
         btnTTCN.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnTTCN.setForeground(new Color(255, 255, 255));
         btnTTCN.setIcon(new ImageIcon(getClass().getResource("/image/icon/user.png"))); // NOI18N
@@ -44,6 +46,8 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnTTCN.setHorizontalTextPosition(SwingConstants.RIGHT);
 
         btnBaoCao.setBackground(new Color(54, 33, 89));
+        btnBaoCao.setOpaque(true);
+        btnBaoCao.setBorderPainted(false);
         btnBaoCao.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnBaoCao.setForeground(new Color(255, 255, 255));
         btnBaoCao.setIcon(new ImageIcon(getClass().getResource("/image/icon/business-report.png"))); // NOI18N
@@ -52,8 +56,19 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnBaoCao.setHorizontalAlignment(SwingConstants.LEFT);
         btnBaoCao.setHorizontalTextPosition(SwingConstants.RIGHT);
 
+        btnBaoCao.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+                jpnView.removeAll();
+                jpnView.setLayout(new BorderLayout());
+                jpnView.add(new XemBaoCao());
+                jpnView.validate();
+                jpnView.repaint();
+            }
+        });
 
         btnDangXuat.setBackground(new Color(54, 33, 89));
+        btnDangXuat.setOpaque(true);
+        btnDangXuat.setBorderPainted(false);
         btnDangXuat.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnDangXuat.setForeground(new Color(255, 255, 255));
         btnDangXuat.setIcon(new ImageIcon(getClass().getResource("/image/icon/exit.png"))); // NOI18N
@@ -76,6 +91,8 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         });
 
         btnThongBao.setBackground(new Color(54, 33, 89));
+        btnThongBao.setOpaque(true);
+        btnThongBao.setBorderPainted(false);
         btnThongBao.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnThongBao.setForeground(new Color(255, 255, 255));
         btnThongBao.setIcon(new ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N

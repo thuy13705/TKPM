@@ -2,37 +2,31 @@
 package ui;
 
 
-public class PhieuRut extends javax.swing.JPanel {
+public class PhieuRut extends javax.swing.JDialog {
 
-    public PhieuRut() {
+
+    public PhieuRut(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
 
-
     @SuppressWarnings("unchecked")
-
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jlbMaSo = new javax.swing.JLabel();
-        jlbSoTien = new javax.swing.JLabel();
-        jlbLoaiTK = new javax.swing.JLabel();
         jlbKhachHang = new javax.swing.JLabel();
         jlbNgayGui = new javax.swing.JLabel();
         jlbNgayRut = new javax.swing.JLabel();
         jlbTong = new javax.swing.JLabel();
         btnTatToan = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jlbMaSo = new javax.swing.JLabel();
+        jlbSoTien = new javax.swing.JLabel();
+        jlbLoaiTK = new javax.swing.JLabel();
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Phiếu rút tiền");
-
-        jlbMaSo.setText("Mã sổ: ");
-
-        jlbSoTien.setText("Số tiền gửi: ");
-
-        jlbLoaiTK.setText("Loại tiết kiệm:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jlbKhachHang.setText("Khách hàng: ");
 
@@ -44,8 +38,17 @@ public class PhieuRut extends javax.swing.JPanel {
 
         btnTatToan.setText("Tất toán");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Phiếu rút tiền");
+
+        jlbMaSo.setText("Mã sổ: ");
+
+        jlbSoTien.setText("Số tiền gửi: ");
+
+        jlbLoaiTK.setText("Loại tiết kiệm:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -63,7 +66,7 @@ public class PhieuRut extends javax.swing.JPanel {
                         .addComponent(jlbKhachHang)
                         .addComponent(jlbNgayGui)
                         .addComponent(jlbNgayRut)))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTatToan)
@@ -91,10 +94,28 @@ public class PhieuRut extends javax.swing.JPanel {
                 .addComponent(jlbTong)
                 .addGap(18, 18, 18)
                 .addComponent(btnTatToan)
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGap(0, 58, Short.MAX_VALUE))
         );
-    }
 
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                PhieuRut dialog = new PhieuRut(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
 
     private javax.swing.JButton btnTatToan;

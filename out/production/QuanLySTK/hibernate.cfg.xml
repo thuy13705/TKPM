@@ -6,13 +6,21 @@
     <session-factory>
         <property name="connection.url">jdbc:mysql://localhost:3306/QuanLySTK</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<<<<<<< HEAD
+=======
         <property name="connection.username">root</property>
          <property name="connection.password">anhthu2410</property>
+>>>>>>> master
         <mapping resource="BangThamSo.hbm.xml"/>
         <mapping resource="LoaiSTK.hbm.xml"/>
         <mapping resource="NguoiDung.hbm.xml"/>
         <mapping resource="PhieuGiaoDich.hbm.xml"/>
         <mapping resource="SoTietKiem.hbm.xml"/>
+<<<<<<< HEAD
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+=======
+>>>>>>> master
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

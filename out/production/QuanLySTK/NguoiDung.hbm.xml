@@ -24,7 +24,11 @@
             <column name="Username" sql-type="varchar(50)" length="50"/>
         </property>
         <property name="password">
+<<<<<<< HEAD
+            <column name="Password" sql-type="varchar(50)" length="50"/>
+=======
             <column name="Password" sql-type="varchar(255)" length="255"/>
+>>>>>>> master
         </property>
         <property name="loaiNd">
             <column name="LoaiND" sql-type="int"/>

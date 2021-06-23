@@ -61,8 +61,6 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
 
         jLabel6.setText("CMND/CCCD:");
 
-        txtTen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
         btnLuu.setText("Lưu");
 
         jLabel2.setText("Họ và tên:");
