@@ -49,8 +49,8 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/edit1.png")));
         jButton2.setText("Chỉnh sửa");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/delete1.png")));
-        jButton3.setText("Xoá");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/padlock.png")));
+        jButton3.setText("Khoá");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt){
             }

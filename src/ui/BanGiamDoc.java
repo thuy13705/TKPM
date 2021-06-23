@@ -67,7 +67,7 @@ public class BanGiamDoc extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent evt) {
                 jpnView.removeAll();
                 jpnView.setLayout(new BorderLayout());
-                //jpnView.add(new Ba());
+                jpnView.add(new XemBaoCao());
                 jpnView.validate();
                 jpnView.repaint();
             }

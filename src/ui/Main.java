@@ -5,7 +5,7 @@ public class Main {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KiemToanTietKiem().setVisible(true);
+                new BanGiamDoc().setVisible(true);
             }
         });
     }
