@@ -52,8 +52,6 @@ public class ThongTinCaNhan extends javax.swing.JPanel {
 
         jLabel6.setText("CMND/Căn cước:");
 
-        txtTen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
         btnLuu.setText("Lưu");
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

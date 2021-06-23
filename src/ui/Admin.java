@@ -32,6 +32,8 @@ public class Admin extends javax.swing.JFrame {
         jLabel1.setText("ADMIN");
 
         btnQuanLyNguoiDung.setBackground(new java.awt.Color(54, 33, 89));
+        btnQuanLyNguoiDung.setOpaque(true);
+        btnQuanLyNguoiDung.setBorderPainted(false);
         btnQuanLyNguoiDung.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnQuanLyNguoiDung.setForeground(new java.awt.Color(255, 255, 255));
         btnQuanLyNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/community.png"))); // NOI18N
@@ -50,6 +52,8 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btnTTCN.setBackground(new java.awt.Color(54, 33, 89));
+        btnTTCN.setOpaque(true);
+        btnTTCN.setBorderPainted(false);
         btnTTCN.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnTTCN.setForeground(new java.awt.Color(255, 255, 255));
         btnTTCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/user.png"))); // NOI18N
@@ -68,6 +72,8 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btnThongBao.setBackground(new java.awt.Color(54, 33, 89));
+        btnThongBao.setOpaque(true);
+        btnThongBao.setBorderPainted(false);
         btnThongBao.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnThongBao.setForeground(new java.awt.Color(255, 255, 255));
         btnThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
@@ -86,6 +92,8 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btnDangXuat.setBackground(new java.awt.Color(54, 33, 89));
+        btnDangXuat.setOpaque(true);
+        btnDangXuat.setBorderPainted(false);
         btnDangXuat.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnDangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/exit.png"))); // NOI18N

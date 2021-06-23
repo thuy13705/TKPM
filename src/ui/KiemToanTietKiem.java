@@ -48,6 +48,8 @@ public class KiemToanTietKiem extends javax.swing.JFrame {
         jLabel1.setText("KIỂM TOÁN TIẾT KIỆM");
 
         btnTTCN.setBackground(new java.awt.Color(54, 33, 89));
+        btnTTCN.setOpaque(true);
+        btnTTCN.setBorderPainted(false);
         btnTTCN.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         btnTTCN.setForeground(new java.awt.Color(255, 255, 255));
         btnTTCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/user.png")));
@@ -66,6 +68,8 @@ public class KiemToanTietKiem extends javax.swing.JFrame {
         });
 
         btnQLSo.setBackground(new java.awt.Color(54, 33, 89));
+        btnQLSo.setOpaque(true);
+        btnQLSo.setBorderPainted(false);
         btnQLSo.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         btnQLSo.setForeground(new java.awt.Color(255, 255, 255));
         btnQLSo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/note.png")));
@@ -84,6 +88,8 @@ public class KiemToanTietKiem extends javax.swing.JFrame {
         });
 
         btnQLKhachHang.setBackground(new java.awt.Color(54, 33, 89));
+        btnQLKhachHang.setOpaque(true);
+        btnQLKhachHang.setBorderPainted(false);
         btnQLKhachHang.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnQLKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         btnQLKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/community.png"))); // NOI18N
@@ -95,13 +101,15 @@ public class KiemToanTietKiem extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jpnView.removeAll();
                 jpnView.setLayout(new BorderLayout());
-                //jpnView.add(new ThongBao());
+                jpnView.add(new QuanLyKhachHang());
                 jpnView.validate();
                 jpnView.repaint();
             }
         });
 
         btnThongBao.setBackground(new java.awt.Color(54, 33, 89));
+        btnThongBao.setOpaque(true);
+        btnThongBao.setBorderPainted(false);
         btnThongBao.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnThongBao.setForeground(new java.awt.Color(255, 255, 255));
         btnThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
@@ -120,6 +128,8 @@ public class KiemToanTietKiem extends javax.swing.JFrame {
         });
 
         btnBaoCao.setBackground(new java.awt.Color(54, 33, 89));
+        btnBaoCao.setOpaque(true);
+        btnBaoCao.setBorderPainted(false);
         btnBaoCao.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnBaoCao.setForeground(new java.awt.Color(255, 255, 255));
         btnBaoCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/business-report.png"))); // NOI18N
@@ -138,6 +148,8 @@ public class KiemToanTietKiem extends javax.swing.JFrame {
         });
 
         btnDangXuat.setBackground(new java.awt.Color(54, 33, 89));
+        btnDangXuat.setOpaque(true);
+        btnDangXuat.setBorderPainted(false);
         btnDangXuat.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnDangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/exit.png"))); // NOI18N
