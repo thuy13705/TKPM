@@ -76,6 +76,32 @@ public class NguoiDung {
         this.loaiNd = loaiNd;
     }
 
+    public NguoiDung() {
+    }
+
+    public NguoiDung(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+
+    public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt) {
+        this.tenNd = tenNd;
+        this.diaChi = diaChi;
+        this.cmnd = cmnd;
+        this.sdt = sdt;
+    }
+
+    public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt, String username, String password, int loaiNd) {
+        this.tenNd = tenNd;
+        this.diaChi = diaChi;
+        this.cmnd = cmnd;
+        this.sdt = sdt;
+        this.username = username;
+        this.password = password;
+        this.loaiNd = loaiNd;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

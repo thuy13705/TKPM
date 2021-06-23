@@ -5,16 +5,25 @@
  */
 package ui;
 
+import model.dao.NguoiDungDAO;
+import model.pojo.NguoiDung;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author thupham
  */
-public class ThongTinCaNhan extends javax.swing.JPanel {
+public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener {
+    private JFrame jFrame;
 
     /**
      * Creates new form ThongTinCaNhan
      */
-    public ThongTinCaNhan() {
+    public ThongTinCaNhan(JFrame jFrame) {
+        this.jFrame=jFrame;
         initComponents();
     }
 
@@ -50,23 +59,13 @@ public class ThongTinCaNhan extends javax.swing.JPanel {
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel6.setText("CMND/Căn cước:");
+        jLabel6.setText("CMND/CCCD:");
 
         btnLuu.setText("Lưu");
-        btnLuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuuActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Họ và tên:");
 
         jButton2.setText("Đổi thông tin đăng nhập");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Địa chỉ:");
 
@@ -164,14 +163,55 @@ public class ThongTinCaNhan extends javax.swing.JPanel {
         );
     }// </editor-fold>
 
-    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    public void showMessage(String msg){
+        JOptionPane.showMessageDialog(jFrame,msg);
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    public void showTTCN(NguoiDung nguoiDung){
+        txtTen.setText(nguoiDung.getTenNd());
+        txtSDT.setText(nguoiDung.getSdt());
+        txtCMND.setText(nguoiDung.getCmnd());
+        txtDiaChi.setText(nguoiDung.getDiaChi());
+    }
+    private boolean isValidateTen(){
+        if (txtTen.getText().equals("")){
+            showMessage("Tên không được trống.");
+            return false;
+        }
+        return true;
     }
 
+    private boolean isValidateCMND(){
+        if (txtCMND.getText().equals("")){
+            showMessage("CMND/CCCD không được trống.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidateSDT(){
+        if (txtSDT.getText().equals("")){
+            showMessage("SĐT không được trống.");
+            return false;
+        }
+        return true;
+    }
+
+    public NguoiDung getND(){
+        NguoiDung nguoiDung=null;
+        if (isValidateTen()==true & isValidateCMND()==true && isValidateSDT()==true){
+            nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText());
+        }
+        return nguoiDung;
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void addThemListener(ActionListener listener) {
+        btnLuu.addActionListener(listener);
+    }
 
     // Variables declaration - do not modify
     private javax.swing.JButton btnLuu;
@@ -190,5 +230,7 @@ public class ThongTinCaNhan extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTen;
+
+
     // End of variables declaration
 }
