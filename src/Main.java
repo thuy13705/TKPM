@@ -14,8 +14,9 @@ public class Main {
 //        else
 //            System.out.println("Loi");
 
-        Login login=new Login();
-        LoginController loginController=new LoginController(login);
-        loginController.showLoginView();
+        System.out.println(NguoiDungDAO.layMaxID());
+//        Login login=new Login();
+ //       LoginController loginController=new LoginController(login);
+ //       loginController.showLoginView();
     }
 }
