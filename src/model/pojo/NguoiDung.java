@@ -1,6 +1,7 @@
 package model.pojo;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class NguoiDung {
     private int maNd;
@@ -11,6 +12,52 @@ public class NguoiDung {
     private String username;
     private String password;
     private int loaiNd;
+    private String email;
+    private Integer tinhTrang;
+    private long soDu;
+    private Set<SoTietKiem> soTKs;
+    private Set<PhieuGiaoDich> nguoiGDs;
+
+    public Set<PhieuGiaoDich> getNguoiGDs() {
+        return nguoiGDs;
+    }
+
+    public void setNguoiGDs(Set<PhieuGiaoDich> nguoiGDs) {
+        this.nguoiGDs = nguoiGDs;
+    }
+
+    public Set<SoTietKiem> getSoTKs() {
+        return soTKs;
+    }
+
+    public void setSoTKs(Set<SoTietKiem> soTKs) {
+        this.soTKs = soTKs;
+    }
+
+
+    public long getSoDu() {
+        return soDu;
+    }
+
+    public void setSoDu(long soDu) {
+        this.soDu = soDu;
+    }
+
+    public Integer getTinhTrang() {
+        return tinhTrang;
+    }
+
+    public void setTinhTrang(Integer tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public int getMaNd() {
         return maNd;
@@ -92,7 +139,7 @@ public class NguoiDung {
         this.sdt = sdt;
     }
 
-    public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt, String username, String password, int loaiNd) {
+    public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt,String email, String username, String password, int loaiNd,  long soDu) {
         this.tenNd = tenNd;
         this.diaChi = diaChi;
         this.cmnd = cmnd;
@@ -100,6 +147,9 @@ public class NguoiDung {
         this.username = username;
         this.password = password;
         this.loaiNd = loaiNd;
+        this.email = email;
+        this.soDu = soDu;
+        this.tinhTrang=0;
     }
 
     @Override

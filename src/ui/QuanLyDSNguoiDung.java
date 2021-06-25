@@ -3,14 +3,14 @@ package ui;
 
 import model.dao.NguoiDungDAO;
 import model.pojo.NguoiDung;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 
 public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListener, ListSelectionListener {
@@ -103,13 +103,15 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         NguoiDung nguoiDung=null;
         JTextField txtTen=new JTextField();
         JTextField txtDiaChi=new JTextField();
+        JTextField txtEmail=new JTextField();
         JTextField txtCMND=new JTextField();
         JTextField txtSDT=new JTextField();
+        JTextField txtSoDu=new JTextField();
         JComboBox loaiNDBox=new JComboBox();
-        loaiNDBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ban Giám Đốc","Kiểm Toán Tiết Kiệm", "Kiểm Soát Viên","Khách Hàng" }));
+        loaiNDBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ban Giám Đốc", "Kiểm Soát Viên","Khách Hàng" }));
 
-        Object[] inputFields = {"Họ và Tên:", txtTen, "Địa chỉ:", txtDiaChi,
-                "CMND/CCCD:", txtCMND,"SĐT:",txtSDT,"Loại ND:",loaiNDBox };
+        Object[] inputFields = {"Họ và Tên:", txtTen, "Địa chỉ:", txtDiaChi,"Email: ",txtEmail,
+                "CMND/CCCD:", txtCMND,"SĐT:",txtSDT,"So Du:", txtSoDu,"Loại ND:",loaiNDBox };
 
         int option = JOptionPane.showConfirmDialog(jFrame, inputFields, "Thêm người dùng", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
@@ -123,20 +125,17 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
                     username="BGD"+String.valueOf(max+1);
                     break;
                 case 2:
-                    username="KTTK"+String.valueOf(max+1);
-                    break;
-                case 3:
                     username="KSV"+String.valueOf(max+1);
                     break;
-                case 4:
+                case 3:
                     username="KH"+String.valueOf(max+1);
                     break;
                 default:
                     break;
             }
-            String pass=username;
+            String pass= BCrypt.hashpw(username,BCrypt.gensalt());
             if (!txtCMND.getText().equals("") && !txtTen.getText().equals("") && !txtSDT.getText().equals("")){
-                nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText(),username,pass,loai);
+                nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText(),txtEmail.getText(),username,pass,loai,Long.valueOf(txtSoDu.getText()));
             }
             else
                 showMessage("Tên, CMND/CCCD, SĐT không được trống.");

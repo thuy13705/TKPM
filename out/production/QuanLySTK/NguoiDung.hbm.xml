@@ -14,6 +14,9 @@
         <property name="diaChi">
             <column name="DiaChi" sql-type="varchar(100)" length="100" not-null="true"/>
         </property>
+        <property name="email">
+            <column name="Email" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
         <property name="cmnd">
             <column name="CMND" sql-type="varchar(50)" length="50"/>
         </property>
@@ -24,14 +27,28 @@
             <column name="Username" sql-type="varchar(50)" length="50"/>
         </property>
         <property name="password">
-<<<<<<< HEAD
-            <column name="Password" sql-type="varchar(50)" length="50"/>
-=======
             <column name="Password" sql-type="varchar(255)" length="255"/>
->>>>>>> master
         </property>
         <property name="loaiNd">
             <column name="LoaiND" sql-type="int"/>
         </property>
+        <property name="tinhTrang">
+            <column name="TinhTrang" sql-type="int"/>
+        </property>
+        <property name="soDu">
+            <column name="SoDu" sql-type="long"/>
+        </property>
+        <set inverse="true" name="soTKs" fetch="join" lazy="false" >
+            <key>
+                <column length="11" name="mand"/>
+            </key>
+            <one-to-many class="model.pojo.SoTietKiem"/>
+        </set>
+        <set inverse="true" name="nguoiGDs" fetch="join" lazy="false" >
+            <key>
+                <column length="11" name="NguoiGiaoDich"/>
+            </key>
+            <one-to-many class="model.pojo.PhieuGiaoDich"/>
+        </set>
     </class>
 </hibernate-mapping>

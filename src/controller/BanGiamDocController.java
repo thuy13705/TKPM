@@ -26,7 +26,7 @@ public class BanGiamDocController {
         @Override
         public void actionPerformed(ActionEvent e) {
             ThongTinCaNhan thongTinCaNhan=new ThongTinCaNhan(banGiamDocView);
-            TTCNController ttcnController=new TTCNController(nguoiDung,thongTinCaNhan);
+            TTCNController ttcnController=new TTCNController(nguoiDung,thongTinCaNhan,banGiamDocView);
             banGiamDocView.showPanel(thongTinCaNhan);
         }
     }
@@ -34,9 +34,7 @@ public class BanGiamDocController {
     class BaoCaoListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-//            BanGiamDoc quanLyDSNguoiDung=new QuanLyDSNguoiDung(banGiamDocView);
-//            QLNDController qlndController=new QLNDController(nguoiDung,quanLyDSNguoiDung);
-//            banGiamDocView.showPanel(quanLyDSNguoiDung);
+
         }
     }
 }

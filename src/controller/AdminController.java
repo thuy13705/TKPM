@@ -30,7 +30,7 @@ public class AdminController {
         @Override
         public void actionPerformed(ActionEvent e) {
             ThongTinCaNhan thongTinCaNhan=new ThongTinCaNhan(adminView);
-            TTCNController ttcnController=new TTCNController(nguoiDung,thongTinCaNhan);
+            TTCNController ttcnController=new TTCNController(nguoiDung,thongTinCaNhan,adminView);
             adminView.showPanel(thongTinCaNhan);
         }
     }

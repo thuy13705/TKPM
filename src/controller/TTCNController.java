@@ -2,20 +2,25 @@ package controller;
 
 import model.dao.NguoiDungDAO;
 import model.pojo.NguoiDung;
+import ui.DoiThongTinDangNhap;
 import ui.ThongTinCaNhan;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TTCNController {
+    private JFrame jFrame;
     private NguoiDung nguoiDung;
     ThongTinCaNhan thongTinCaNhan;
 
-    public TTCNController(NguoiDung nguoiDung, ThongTinCaNhan thongTinCaNhan) {
+    public TTCNController(NguoiDung nguoiDung, ThongTinCaNhan thongTinCaNhan,JFrame jFrame) {
+        this.jFrame=jFrame;
         this.nguoiDung = nguoiDung;
         this.thongTinCaNhan = thongTinCaNhan;
-        thongTinCaNhan.addThemListener(new ThongTinCaNhanListener());
         thongTinCaNhan.showTTCN(nguoiDung);
+        thongTinCaNhan.addThemListener(new ThongTinCaNhanListener());
+        thongTinCaNhan.doiListener(new DoiListener());
     }
 
     class ThongTinCaNhanListener implements ActionListener{
@@ -35,6 +40,15 @@ public class TTCNController {
                 else
                     thongTinCaNhan.showMessage("Câp nhật thất bại.");
             }
+        }
+    }
+
+    class DoiListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DoiThongTinDangNhap doiThongTinDangNhap=new DoiThongTinDangNhap(jFrame,true,nguoiDung);
+            DoiTTDNController doiTTDNController=new DoiTTDNController(nguoiDung,doiThongTinDangNhap);
+            doiTTDNController.showDoiTTDN();
         }
     }
 

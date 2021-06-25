@@ -3,6 +3,7 @@ package model.pojo;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Objects;
+import java.util.Set;
 
 public class SoTietKiem {
     private int maSo;
@@ -10,6 +11,24 @@ public class SoTietKiem {
     private BigDecimal soTienGui;
     private LoaiSTK loaiSo;
     private NguoiDung maND;
+    private Set<PhieuGiaoDich> phieuGDs;
+    private Integer tinhTrang;
+
+    public Integer getTinhTrang() {
+        return tinhTrang;
+    }
+
+    public void setTinhTrang(Integer tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
+
+    public Set<PhieuGiaoDich> getPhieuGDs() {
+        return phieuGDs;
+    }
+
+    public void setPhieuGDs(Set<PhieuGiaoDich> phieuGDs) {
+        this.phieuGDs = phieuGDs;
+    }
 
     public NguoiDung getMaND() {
         return maND;

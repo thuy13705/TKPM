@@ -1,10 +1,19 @@
 package ui;
 
 
-public class DoiThongTinDangNhap extends javax.swing.JDialog {
+import model.dao.NguoiDungDAO;
+import model.pojo.NguoiDung;
+import org.mindrot.jbcrypt.BCrypt;
 
-    public DoiThongTinDangNhap(java.awt.Frame parent, boolean modal) {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class DoiThongTinDangNhap extends javax.swing.JDialog implements ActionListener {
+    private NguoiDung nguoiDung;
+    public DoiThongTinDangNhap(java.awt.Frame parent, boolean modal, NguoiDung nguoiDung) {
         super(parent, modal);
+        this.nguoiDung=nguoiDung;
         initComponents();
     }
 
@@ -43,14 +52,9 @@ public class DoiThongTinDangNhap extends javax.swing.JDialog {
         jLabel5.setText("Nhập lại mật khẩu mới:");
 
         btnLuu.setText("Lưu");
-        btnLuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuuActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Tên đăng nhập:");
-
+        txtTenDangNhap.setText(nguoiDung.getUsername());
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,45 +128,59 @@ public class DoiThongTinDangNhap extends javax.swing.JDialog {
         pack();
     }// </editor-fold>
 
-    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    public void showMessage(String msg){
+        JOptionPane.showMessageDialog(null,msg);
     }
 
-
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private boolean ktUsername(String user){
+        NguoiDung nd= NguoiDungDAO.layNguoiDungUser(user);
+        if (nd!=null) {
+            if (nd.getMaNd() != nguoiDung.getMaNd()) {
+                showMessage("Username đã tồn tại.");
+                return false;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoiThongTinDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoiThongTinDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoiThongTinDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoiThongTinDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DoiThongTinDangNhap dialog = new DoiThongTinDangNhap(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+        return true;
     }
 
-    // Variables declaration - do not modify
+    private boolean ktMatKhauCu(String mkCu){
+        if (!BCrypt.checkpw(mkCu,nguoiDung.getPassword())){
+            showMessage("Mật khẩu chưa chính xác");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean ktMatKhauMoi(String mkMoi, String mkNhapLai){
+        if (!mkMoi.equals(mkNhapLai)){
+            showMessage("Mật khẩu không trùng khớp.");
+            return false;
+        }
+        return true;
+    }
+
+
+    public NguoiDung doiTT(){
+        NguoiDung nd=nguoiDung;
+        if (ktUsername(txtTenDangNhap.getText()) && ktMatKhauCu(String.copyValueOf(txtMKCu.getPassword()))
+                && ktMatKhauMoi(String.copyValueOf(txtMKMoi.getPassword()),String.copyValueOf(txtMKNhapLai.getPassword()))){
+            nd.setUsername(txtTenDangNhap.getText());
+            nd.setPassword(String.copyValueOf(txtMKMoi.getPassword()));
+            return nd;
+        }
+       return null;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void doiTTDNListener(ActionListener listener){
+        btnLuu.addActionListener(listener);
+    }
+
+
     private javax.swing.JButton btnLuu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -175,5 +193,6 @@ public class DoiThongTinDangNhap extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtMKMoi;
     private javax.swing.JPasswordField txtMKNhapLai;
     private javax.swing.JTextField txtTenDangNhap;
-    // End of variables declaration
+
+
 }

@@ -47,7 +47,7 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
         txtSDT = new javax.swing.JTextField();
         btnLuu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnDoi = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -65,7 +65,7 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
 
         jLabel2.setText("Họ và tên:");
 
-        jButton2.setText("Đổi thông tin đăng nhập");
+        btnDoi.setText("Đổi thông tin đăng nhập");
 
         jLabel3.setText("Địa chỉ:");
 
@@ -97,7 +97,7 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(btnLuu)
-                                        .addComponent(jButton2))
+                                        .addComponent(btnDoi))
                                 .addGap(235, 235, 235))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +130,7 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                                 .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(93, 93, 93))
         );
 
@@ -213,9 +213,12 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
         btnLuu.addActionListener(listener);
     }
 
+    public void doiListener(ActionListener listener) {
+        btnDoi.addActionListener(listener);
+    }
     // Variables declaration - do not modify
     private javax.swing.JButton btnLuu;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnDoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
