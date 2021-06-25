@@ -4,9 +4,10 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class KhachHang extends javax.swing.JFrame {
-
+public class KhachHang extends javax.swing.JFrame implements ActionListener {
 
     public KhachHang() {
         initComponents();
@@ -43,16 +44,7 @@ public class KhachHang extends javax.swing.JFrame {
         btnTTCN.setToolTipText("");
         btnTTCN.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTTCN.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnTTCN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                jpnView.removeAll();
-//                jpnView.setLayout(new BorderLayout());
-//                jpnView.add(new ThongTinCaNhan());
-//                jpnView.validate();
-//                jpnView.repaint();
-            }
 
-        });
 
         btnQLSo.setBackground(new java.awt.Color(54, 33, 89));
         btnQLSo.setOpaque(true);
@@ -64,15 +56,6 @@ public class KhachHang extends javax.swing.JFrame {
         btnQLSo.setToolTipText("");
         btnQLSo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLSo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnQLSo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new QuanLySoTietKiem());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
 
         btnThongBao.setBackground(new java.awt.Color(54, 33, 89));
         btnThongBao.setOpaque(true);
@@ -84,15 +67,6 @@ public class KhachHang extends javax.swing.JFrame {
         btnThongBao.setToolTipText("");
         btnThongBao.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnThongBao.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnThongBao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new ThongBao());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
 
         btnDangXuat.setBackground(new java.awt.Color(54, 33, 89));
         btnDangXuat.setOpaque(true);
@@ -177,9 +151,31 @@ public class KhachHang extends javax.swing.JFrame {
 
         pack();
     }
+    public void showMessage(String msg){
+        JOptionPane.showMessageDialog(this,msg);
+    }
+
+    public void showPanel(JPanel panel){
+        jpnView.removeAll();
+        jpnView.setLayout(new BorderLayout());
+        jpnView.add(panel);
+        jpnView.validate();
+        jpnView.repaint();
+    }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
+    }
+
+    public void getTTCNListener(ActionListener listener){
+        btnTTCN.addActionListener(listener);
+    }
+
+    public void qlSoListener(ActionListener listener){
+        btnQLSo.addActionListener(listener);
+    }
 
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnQLSo;
@@ -189,4 +185,6 @@ public class KhachHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jpnView;
+
+
 }

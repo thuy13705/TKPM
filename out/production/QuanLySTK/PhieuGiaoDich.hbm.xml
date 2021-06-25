@@ -11,12 +11,6 @@
         <property name="ngayGiaoDich">
             <column name="NgayGiaoDich" sql-type="date"/>
         </property>
-<<<<<<< HEAD
-        <property name="soTien">
-            <column name="SoTien" sql-type="decimal(30,2)" precision="30" scale="2"/>
-        </property>
-=======
->>>>>>> master
         <many-to-one class="model.pojo.NguoiDung" name="maND"
                      fetch="select">
             <column length="11" name="NguoiGiaoDich" />
@@ -25,12 +19,6 @@
                      fetch="select">
             <column length="11" name="maso" />
         </many-to-one>
-<<<<<<< HEAD
-        <property name="soTien">
-            <column name="SoTien" sql-type="decimal(30,2)" precision="30" scale="2"/>
-        </property>
-=======
->>>>>>> master
         <property name="loaiPhieu">
             <column name="LoaiPhieu" sql-type="int"/>
         </property>

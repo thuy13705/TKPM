@@ -4,8 +4,10 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class KiemSoatVien extends javax.swing.JFrame {
+public class KiemSoatVien extends javax.swing.JFrame implements ActionListener {
 
 
     public KiemSoatVien() {
@@ -64,15 +66,6 @@ public class KiemSoatVien extends javax.swing.JFrame {
         btnQLDuyetSo.setToolTipText("");
         btnQLDuyetSo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLDuyetSo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnQLDuyetSo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new DanhSachChoDuyet());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
 
         btnThongBao.setBackground(new java.awt.Color(54, 33, 89));
         btnThongBao.setOpaque(true);
@@ -127,15 +120,6 @@ public class KiemSoatVien extends javax.swing.JFrame {
         btnQLPhongToa.setToolTipText("");
         btnQLPhongToa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLPhongToa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnQLPhongToa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new PhongToaSo());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,6 +185,31 @@ public class KiemSoatVien extends javax.swing.JFrame {
         pack();
     }
 
+    public void showPanel(JPanel panel){
+        jpnView.removeAll();
+        jpnView.setLayout(new BorderLayout());
+        jpnView.add(panel);
+        jpnView.validate();
+        jpnView.repaint();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void getTTCN(ActionListener listener){
+        btnTTCN.addActionListener(listener);
+    }
+
+    public void qLDuyetSo(ActionListener listener){
+        btnQLDuyetSo.addActionListener(listener);
+    }
+
+    public void qLPhongToa(ActionListener listener){
+        btnQLPhongToa.addActionListener(listener);
+    }
+
 
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnQLDuyetSo;
@@ -211,5 +220,4 @@ public class KiemSoatVien extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jpnView;
-
 }

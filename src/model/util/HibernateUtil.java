@@ -4,15 +4,19 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-    public static SessionFactory getSessionFactory() {
-        SessionFactory sessionFactory = null;
+    private static SessionFactory sessionFactory;
+
+    static {
+        sessionFactory = null;
         try {
             Configuration configuration = new Configuration();
-            configuration.configure();
-            sessionFactory = configuration.buildSessionFactory();
+            sessionFactory = configuration.configure().buildSessionFactory();
+
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
+    }
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 }

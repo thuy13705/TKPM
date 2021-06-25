@@ -22,5 +22,11 @@
                      fetch="select">
             <column length="11" name="MaND" />
         </many-to-one>
+        <set inverse="true" name="phieuGDs" fetch="join" lazy="false" >
+            <key>
+                <column length="11" name="MaSo"/>
+            </key>
+            <one-to-many class="model.pojo.PhieuGiaoDich"/>
+        </set>
     </class>
 </hibernate-mapping>
