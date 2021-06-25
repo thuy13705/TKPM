@@ -12,6 +12,15 @@ public class SoTietKiem {
     private LoaiSTK loaiSo;
     private NguoiDung maND;
     private Set<PhieuGiaoDich> phieuGDs;
+    private Integer tinhTrang;
+
+    public Integer getTinhTrang() {
+        return tinhTrang;
+    }
+
+    public void setTinhTrang(Integer tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
 
     public Set<PhieuGiaoDich> getPhieuGDs() {
         return phieuGDs;

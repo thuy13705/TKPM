@@ -55,6 +55,15 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnBaoCao.setToolTipText("");
         btnBaoCao.setHorizontalAlignment(SwingConstants.LEFT);
         btnBaoCao.setHorizontalTextPosition(SwingConstants.RIGHT);
+        btnBaoCao.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+                jpnView.removeAll();
+                jpnView.setLayout(new BorderLayout());
+                jpnView.add(new XemBaoCao());
+                jpnView.validate();
+                jpnView.repaint();
+            }
+        });
 
         btnDangXuat.setBackground(new Color(54, 33, 89));
         btnDangXuat.setOpaque(true);

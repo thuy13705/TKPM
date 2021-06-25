@@ -2,6 +2,7 @@ package controller;
 
 import model.dao.NguoiDungDAO;
 import model.pojo.NguoiDung;
+import org.mindrot.jbcrypt.BCrypt;
 import ui.DoiThongTinDangNhap;
 
 
@@ -18,12 +19,16 @@ public class DoiTTDNController {
         doiThongTinDangNhap.doiTTDNListener(new DoiTTDNListener());
     }
 
+    public void showDoiTTDN(){
+        doiThongTinDangNhap.setVisible(true);
+    }
+
     class DoiTTDNListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             NguoiDung nd=doiThongTinDangNhap.doiTT();
             if (nd!=null){
-                nguoiDung.setPassword(nd.getPassword());
+                nguoiDung.setPassword(BCrypt.hashpw(nd.getPassword(),BCrypt.gensalt()));
                 nguoiDung.setUsername(nd.getUsername());
                 boolean check=NguoiDungDAO.capNhatND(nguoiDung);
                 if (check==true){
@@ -31,6 +36,7 @@ public class DoiTTDNController {
                 }
                 else
                     doiThongTinDangNhap.showMessage("Đổi thất bại.");
+                doiThongTinDangNhap.setVisible(false);
             }
         }
     }

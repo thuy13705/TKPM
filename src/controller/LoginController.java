@@ -14,7 +14,6 @@ public class LoginController {
     private Admin adminView;
     private BanGiamDoc banGiamDocView;
     private KhachHang khachHangView;
-    private KiemToanTietKiem kiemToanTietKiemView;
     private KiemSoatVien kiemSoatVienVien;
 
     public LoginController(Login loginView){
@@ -49,18 +48,12 @@ public class LoginController {
                             loginView.setVisible(false);
                             break;
                         case 2:
-                            kiemToanTietKiemView=new KiemToanTietKiem();
-                            KiemToanTietKiemController KiemToanTietKiemController=new KiemToanTietKiemController(kiemToanTietKiemView,nguoiDung);
-                            KiemToanTietKiemController.showKiemToanTietKiemView();
-                            loginView.setVisible(false);
-                            break;
-                        case 3:
                             kiemSoatVienVien=new KiemSoatVien();
                             KiemSoatVienController KiemSoatVienController=new KiemSoatVienController(kiemSoatVienVien,nguoiDung);
                             KiemSoatVienController.showKiemSoatVienView();
                             loginView.setVisible(false);
                             break;
-                        case 4:
+                        case 3:
                             khachHangView=new KhachHang();
                             KhachHangController KhachHangController=new KhachHangController(khachHangView,nguoiDung);
                             KhachHangController.showKhachHangView();

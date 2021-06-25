@@ -164,7 +164,7 @@ public class DoiThongTinDangNhap extends javax.swing.JDialog implements ActionLi
         NguoiDung nd=nguoiDung;
         if (ktUsername(txtTenDangNhap.getText()) && ktMatKhauCu(String.copyValueOf(txtMKCu.getPassword()))
                 && ktMatKhauMoi(String.copyValueOf(txtMKMoi.getPassword()),String.copyValueOf(txtMKNhapLai.getPassword()))){
-            nd.setPassword(txtTenDangNhap.getText());
+            nd.setUsername(txtTenDangNhap.getText());
             nd.setPassword(String.copyValueOf(txtMKMoi.getPassword()));
             return nd;
         }

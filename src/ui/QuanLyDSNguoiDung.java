@@ -10,8 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 
 public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListener, ListSelectionListener {
@@ -109,7 +108,7 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         JTextField txtSDT=new JTextField();
         JTextField txtSoDu=new JTextField();
         JComboBox loaiNDBox=new JComboBox();
-        loaiNDBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ban Giám Đốc","Kiểm Toán Tiết Kiệm", "Kiểm Soát Viên","Khách Hàng" }));
+        loaiNDBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ban Giám Đốc", "Kiểm Soát Viên","Khách Hàng" }));
 
         Object[] inputFields = {"Họ và Tên:", txtTen, "Địa chỉ:", txtDiaChi,"Email: ",txtEmail,
                 "CMND/CCCD:", txtCMND,"SĐT:",txtSDT,"So Du:", txtSoDu,"Loại ND:",loaiNDBox };
@@ -126,12 +125,9 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
                     username="BGD"+String.valueOf(max+1);
                     break;
                 case 2:
-                    username="KTTK"+String.valueOf(max+1);
-                    break;
-                case 3:
                     username="KSV"+String.valueOf(max+1);
                     break;
-                case 4:
+                case 3:
                     username="KH"+String.valueOf(max+1);
                     break;
                 default:

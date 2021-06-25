@@ -38,5 +38,17 @@
         <property name="soDu">
             <column name="SoDu" sql-type="long"/>
         </property>
+        <set inverse="true" name="soTKs" fetch="join" lazy="false" >
+            <key>
+                <column length="11" name="mand"/>
+            </key>
+            <one-to-many class="model.pojo.SoTietKiem"/>
+        </set>
+        <set inverse="true" name="nguoiGDs" fetch="join" lazy="false" >
+            <key>
+                <column length="11" name="NguoiGiaoDich"/>
+            </key>
+            <one-to-many class="model.pojo.PhieuGiaoDich"/>
+        </set>
     </class>
 </hibernate-mapping>

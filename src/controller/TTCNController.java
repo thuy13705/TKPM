@@ -47,8 +47,8 @@ public class TTCNController {
         @Override
         public void actionPerformed(ActionEvent e) {
             DoiThongTinDangNhap doiThongTinDangNhap=new DoiThongTinDangNhap(jFrame,true,nguoiDung);
-            doiThongTinDangNhap.setVisible(true);
             DoiTTDNController doiTTDNController=new DoiTTDNController(nguoiDung,doiThongTinDangNhap);
+            doiTTDNController.showDoiTTDN();
         }
     }
 
