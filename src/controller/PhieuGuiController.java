@@ -1,6 +1,5 @@
 package controller;
 
-import com.mysql.cj.conf.PropertyDefinitions;
 import model.dao.LoaiSTKDAO;
 import model.dao.NguoiDungDAO;
 import model.dao.PhieuGiaoDichDAO;
@@ -22,7 +21,7 @@ import java.util.Date;
 public class PhieuGuiController {
     private NguoiDung nguoiDung;
     PhieuGui phieuGuiView;
-    private KhachHang KhachHangView;
+
 
     public PhieuGuiController(NguoiDung nguoiDung, PhieuGui phieuGuiView) {
         this.nguoiDung = nguoiDung;

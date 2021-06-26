@@ -1,23 +1,11 @@
 package controller;
 
-import model.dao.PhieuGiaoDichDAO;
-import model.dao.SoTietKiemDAO;
 import model.pojo.NguoiDung;
-import model.pojo.PhieuGiaoDich;
-import model.pojo.SoTietKiem;
 import ui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+
 
 public class KhachHangController {
     private NguoiDung nguoiDung;

@@ -119,7 +119,7 @@ public class LoginController {
         List<SoTietKiem> list = SoTietKiemDAO.layDSSTK();
         System.out.println(list.size());
         for(SoTietKiem soTietKiem: list){
-            if(soTietKiem.getTinhTrang() == 0) {
+            if(soTietKiem.getTinhTrang() == 1) {
                 if (soTietKiem.getPhieuGDs().size() == 1) {
                     boolean kq = tatToanToiHan(soTietKiem);
                     if (kq == true) {

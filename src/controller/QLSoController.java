@@ -33,13 +33,17 @@ public class QLSoController {
         this.nguoiDung = nguoiDung;
         this.quanLySoTietKiemView = quanLySoTietKiemView;
         quanLySoTietKiemView.getPhieuGuiListener(new QLSoController.PhieuGuiListener());
+        quanLySoTietKiemView.showLoaiTK(LoaiSTKDAO.layDSLoaiSTK());
+        quanLySoTietKiemView.getPhieuRutListener(new QLSoController.PhieuRutListener());
+        quanLySoTietKiemView.getTTSoListener(new QLSoController.TTSoListener());
+        quanLySoTietKiemView.getTimKiemListener(new QLSoController.TimKiemListener());
         quanLySoTietKiemView.showNguoiDung(nguoiDung);
         List<SoTietKiem> list = new ArrayList<SoTietKiem>();
         Iterator<SoTietKiem> list1 = nguoiDung.getSoTKs().iterator();
         while (list1.hasNext()) {
             {
                 SoTietKiem soTietKiem = list1.next();
-                if (soTietKiem.getTinhTrang() == 0) {
+                if (soTietKiem.getTinhTrang() == 1) {
                     if (soTietKiem.getPhieuGDs().size() == 1) {
 
                         list.add(soTietKiem);
@@ -49,10 +53,7 @@ public class QLSoController {
             }
         }
         quanLySoTietKiemView.showDS(list);
-        quanLySoTietKiemView.showLoaiTK(LoaiSTKDAO.layDSLoaiSTK());
-        quanLySoTietKiemView.getPhieuRutListener(new QLSoController.PhieuRutListener());
-        quanLySoTietKiemView.getTTSoListener(new QLSoController.TTSoListener());
-        quanLySoTietKiemView.getTimKiemListener(new QLSoController.TimKiemListener());
+
     }
 
     class TTSoListener implements MouseListener {

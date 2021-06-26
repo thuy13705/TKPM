@@ -29,7 +29,7 @@ public class QLSoDaTTController {
         while (list1.hasNext()) {
             {
                 SoTietKiem soTietKiem = list1.next();
-                if (soTietKiem.getTinhTrang() == 0) {
+                if (soTietKiem.getTinhTrang() == 1) {
                     if (soTietKiem.getPhieuGDs().size() == 2) {
                         list.add(soTietKiem);
                     }

@@ -21,6 +21,7 @@ import java.util.List;
 
 
 public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListener, ListSelectionListener {
+
     private NguoiDung nguoiDung;
     private JFrame jFrame;
     public QuanLySoTietKiem(NguoiDung nguoiDung, JFrame jFrame) {
@@ -336,6 +337,7 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
     public String layMaTimKiem(){
         return jTextField1.getText();
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
