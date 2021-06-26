@@ -12,6 +12,18 @@ public class PhieuGiaoDich {
     private SoTietKiem maSo;
     private NguoiDung maND;
 
+    public PhieuGiaoDich(Date ngayGiaoDich, BigDecimal soTien, int loaiPhieu, SoTietKiem maSo, NguoiDung maND){
+        this.ngayGiaoDich = ngayGiaoDich;
+        this.soTien = soTien;
+        this.loaiPhieu = loaiPhieu;
+        this.maSo = maSo;
+        this.maND = maND;
+    }
+
+    public PhieuGiaoDich() {
+
+    }
+
     public NguoiDung getMaND() {
         return maND;
     }

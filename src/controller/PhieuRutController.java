@@ -27,7 +27,7 @@ public class PhieuRutController {
     BigDecimal soTien;
 
 
-    public PhieuRutController(NguoiDung nguoiDung, SoTietKiem soTietKiem, List<String> list, PhieuRut phieuRutView) {
+    public PhieuRutController(NguoiDung nguoiDung, SoTietKiem soTietKiem, PhieuRut phieuRutView) {
         this.nguoiDung = nguoiDung;
         this.soTietKiem = soTietKiem;
         this.list = list;
@@ -40,9 +40,7 @@ public class PhieuRutController {
 
     public void tinhTong(SoTietKiem soTietKiem) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date ngayDenHan = null;
         try {
-            ngayDenHan = format.parse(list.get(1));
             ngayGD = format.parse(java.time.LocalDate.now().toString());
         } catch (ParseException e) {
             e.printStackTrace();
@@ -52,6 +50,7 @@ public class PhieuRutController {
 
     }
 
+    //Tinh lai suat 0.2%
     public BigDecimal tinhLaiSuatTH(SoTietKiem soTietKiem, int soNgayGui) {
         BigDecimal soTienLai = (soTietKiem.getSoTienGui().multiply(BigDecimal.valueOf(0.2)));
         soTienLai = soTienLai.multiply(BigDecimal.valueOf(soNgayGui));

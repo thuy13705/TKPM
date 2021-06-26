@@ -1,13 +1,12 @@
 package controller;
 
-import model.dao.LoaiSTKDAO;
+
 import model.dao.SoTietKiemDAO;
 import model.pojo.NguoiDung;
 import model.pojo.PhieuGiaoDich;
 import model.pojo.SoTietKiem;
 import ui.DanhSachSoDaTT;
-import ui.PhongToaSo;
-import ui.QuanLySoTietKiem;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +29,7 @@ public class QLSoDaTTController {
         while (list1.hasNext()) {
             {
                 SoTietKiem soTietKiem = list1.next();
-                if (soTietKiem.getTinhTrang() == 1) {
+                if (soTietKiem.getTinhTrang() == 0) {
                     if (soTietKiem.getPhieuGDs().size() == 2) {
                         list.add(soTietKiem);
                     }

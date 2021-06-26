@@ -303,9 +303,9 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
         txtSoTienGui.setText(String.valueOf(soTietKiem.getSoTienGui()));
         boxLoaiTK.setSelectedIndex(soTietKiem.getLoaiSo().getLoaiSo());
         txtNgayGui.setText(soTietKiem.getNgayMoSo().toString());
+        txtNgayDenHan.setText(soTietKiem.getNgayDenHan().toString());
         txtTienLai.setText(list.get(0));
-        txtNgayDenHan.setText(list.get(1));
-        txtTong.setText(list.get(2));
+        txtTong.setText(list.get(1));
     }
 
     public void showDS(List<SoTietKiem> list){

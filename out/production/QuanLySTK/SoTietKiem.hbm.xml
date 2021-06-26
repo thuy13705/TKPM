@@ -11,6 +11,9 @@
         <property name="ngayMoSo">
             <column name="NgayMoSo" sql-type="date"/>
         </property>
+        <property name="ngayDenHan">
+            <column name="NgayDenHan" sql-type="date"/>
+        </property>
         <property name="soTienGui">
             <column name="SoTienGui" sql-type="decimal(30,2)" precision="30" scale="2"/>
         </property>
