@@ -6,6 +6,26 @@ public class LoaiSTK {
     private int loaiSo;
     private String tenLoai;
     private double laiSuat;
+    private Integer tinhTrang;
+
+    public Integer getTinhTrang() {
+        return tinhTrang;
+    }
+
+    public void setTinhTrang(Integer tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
+
+    public LoaiSTK(int loaiSo, String tenLoai, double laiSuat, Integer tinhTrang) {
+        this.loaiSo = loaiSo;
+        this.tenLoai = tenLoai;
+        this.laiSuat = laiSuat;
+        this.tinhTrang = tinhTrang;
+    }
+
+    public LoaiSTK() {
+
+    }
 
     public int getLoaiSo() {
         return loaiSo;

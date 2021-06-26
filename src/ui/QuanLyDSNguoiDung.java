@@ -86,9 +86,6 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))))
         );
-
-        btnXoa.setEnabled(false);
-        btnSua.setEnabled(false);
     }
 
     public void showMessage(String msg){
@@ -169,8 +166,6 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         if (row >= 0) {
             int id=Integer.valueOf(tableND.getModel().getValueAt(row,3).toString());
             nguoiDung=NguoiDungDAO.layNguoiDungID(id);
-            btnSua.setEnabled(true);
-            btnXoa.setEnabled(true);
         }
         return nguoiDung;
     }

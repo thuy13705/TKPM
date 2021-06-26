@@ -86,7 +86,7 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnLaiSuat.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnLaiSuat.setForeground(new Color(255, 255, 255));
         btnLaiSuat.setIcon(new ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
-        btnLaiSuat.setText("Thông báo");
+        btnLaiSuat.setText("Lãi suất và Quy định");
         btnLaiSuat.setToolTipText("");
         btnLaiSuat.setHorizontalAlignment(SwingConstants.LEFT);
         btnLaiSuat.setHorizontalTextPosition(SwingConstants.RIGHT);

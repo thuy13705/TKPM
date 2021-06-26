@@ -14,5 +14,8 @@
         <property name="laiSuat">
             <column name="LaiSuat" sql-type="float(5,2)" precision="5" scale="2"/>
         </property>
+        <property name="tinhTrang">
+            <column name="TinhTrang" sql-type="int" />
+        </property>
     </class>
 </hibernate-mapping>
