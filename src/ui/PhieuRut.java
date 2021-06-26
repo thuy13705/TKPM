@@ -2,17 +2,23 @@
 package ui;
 
 
+import model.pojo.PhieuGiaoDich;
+import model.pojo.SoTietKiem;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+
 public class PhieuRut extends javax.swing.JDialog {
+    private JFrame jFrame;
 
-
-    public PhieuRut(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public PhieuRut(JFrame jFrame) {
+        this.jFrame = jFrame;
         initComponents();
     }
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jlbKhachHang = new javax.swing.JLabel();
@@ -98,23 +104,31 @@ public class PhieuRut extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
+    public void showMessage(String msg){
+        JOptionPane.showMessageDialog(jFrame,msg);
+    }
 
-    public static void main(String args[]) {
+    public void show(SoTietKiem soTietKiem, BigDecimal tong){
+        jlbMaSo.setText("Mã sổ: " + soTietKiem.getMaSo());
+        jlbSoTien.setText("Số tiền gửi: " + soTietKiem.getSoTienGui());
+        jlbLoaiTK.setText("Loại tiết kiệm: " + soTietKiem.getLoaiSo().getTenLoai());
+        jlbKhachHang.setText("Khách hàng: " + soTietKiem.getMaND().getTenNd());
+        jlbNgayGui.setText("Ngày gửi: " + soTietKiem.getNgayMoSo().toString());
+        jlbNgayRut.setText("Ngày rút: " + java.time.LocalDate.now());
+        jlbTong.setText("Tổng tiền nhận được: " + tong);
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                PhieuRut dialog = new PhieuRut(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    }
+
+    public PhieuGiaoDich tatToan(){
+        PhieuGiaoDich phieu = new PhieuGiaoDich();
+        phieu.setLoaiPhieu(1);
+        return phieu;
+    }
+
+    public void tatToanListener(ActionListener listener){
+        btnTatToan.addActionListener(listener);
     }
 
 

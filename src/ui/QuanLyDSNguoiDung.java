@@ -11,6 +11,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListener, ListSelectionListener {
@@ -135,7 +136,7 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
             }
             String pass= BCrypt.hashpw(username,BCrypt.gensalt());
             if (!txtCMND.getText().equals("") && !txtTen.getText().equals("") && !txtSDT.getText().equals("")){
-                nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText(),txtEmail.getText(),username,pass,loai,Long.valueOf(txtSoDu.getText()));
+                nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText(),txtEmail.getText(),username,pass,loai, BigDecimal.valueOf(Long.parseLong(txtSoDu.getText())));
             }
             else
                 showMessage("Tên, CMND/CCCD, SĐT không được trống.");

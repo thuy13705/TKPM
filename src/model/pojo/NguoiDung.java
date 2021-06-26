@@ -1,5 +1,6 @@
 package model.pojo;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ public class NguoiDung {
     private int loaiNd;
     private String email;
     private Integer tinhTrang;
-    private long soDu;
+    private BigDecimal soDu;
     private Set<SoTietKiem> soTKs;
     private Set<PhieuGiaoDich> nguoiGDs;
 
@@ -35,11 +36,11 @@ public class NguoiDung {
     }
 
 
-    public long getSoDu() {
+    public BigDecimal getSoDu() {
         return soDu;
     }
 
-    public void setSoDu(long soDu) {
+    public void setSoDu(BigDecimal soDu) {
         this.soDu = soDu;
     }
 
@@ -139,7 +140,7 @@ public class NguoiDung {
         this.sdt = sdt;
     }
 
-    public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt,String email, String username, String password, int loaiNd,  long soDu) {
+    public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt,String email, String username, String password, int loaiNd,  BigDecimal soDu) {
         this.tenNd = tenNd;
         this.diaChi = diaChi;
         this.cmnd = cmnd;

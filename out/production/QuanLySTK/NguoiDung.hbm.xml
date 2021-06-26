@@ -36,7 +36,7 @@
             <column name="TinhTrang" sql-type="int"/>
         </property>
         <property name="soDu">
-            <column name="SoDu" sql-type="long"/>
+            <column name="SoDu" sql-type="decimal(30,2)"/>
         </property>
         <set inverse="true" name="soTKs" fetch="join" lazy="false" >
             <key>

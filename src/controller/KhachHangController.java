@@ -2,6 +2,7 @@ package controller;
 
 import model.pojo.NguoiDung;
 import ui.KhachHang;
+import ui.QuanLySoTietKiem;
 import ui.ThongTinCaNhan;
 
 import java.awt.event.ActionEvent;
@@ -14,7 +15,7 @@ public class KhachHangController {
         this.khachHangView=KhachHangView;
         this.nguoiDung=nguoiDung;
         khachHangView.getTTCNListener(new TTCNListener());
-        khachHangView.qlSoListener(new QLSoListener());
+        khachHangView.getQLSoListener(new QLSoListener());
     }
 
     public void showKhachHangView(){
@@ -35,7 +36,9 @@ public class KhachHangController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            QuanLySoTietKiem quanLySoTietKiem = new QuanLySoTietKiem(nguoiDung, khachHangView);
+            QLSoController qlSoController = new QLSoController(nguoiDung,quanLySoTietKiem);
+            khachHangView.showPanel(quanLySoTietKiem);
         }
     }
 }

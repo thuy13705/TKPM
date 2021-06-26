@@ -11,6 +11,9 @@
         <property name="ngayGiaoDich">
             <column name="NgayGiaoDich" sql-type="date"/>
         </property>
+        <property name="soTien">
+            <column name="SoTien" sql-type="decimal(30,2)"/>
+        </property>
         <many-to-one class="model.pojo.NguoiDung" name="maND"
                      fetch="select">
             <column length="11" name="NguoiGiaoDich" />

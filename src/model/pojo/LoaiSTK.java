@@ -1,11 +1,14 @@
 package model.pojo;
 
+
 import java.util.Objects;
+
 
 public class LoaiSTK {
     private int loaiSo;
     private String tenLoai;
     private double laiSuat;
+
 
     public int getLoaiSo() {
         return loaiSo;
