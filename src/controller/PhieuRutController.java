@@ -47,11 +47,8 @@ public class PhieuRutController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (ngayDenHan.equals(ngayGD)) {
-            soTien = BigDecimal.valueOf(Long.parseLong(list.get(2)));
-        } else {
-            soTien = soTietKiem.getSoTienGui().add(tinhLaiSuatTH(soTietKiem, khoangCach2Ngay(soTietKiem.getNgayMoSo(), ngayGD)));
-        }
+        soTien = soTietKiem.getSoTienGui().add(tinhLaiSuatTH(soTietKiem, khoangCach2Ngay(soTietKiem.getNgayMoSo(), ngayGD)));
+
 
     }
 

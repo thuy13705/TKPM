@@ -24,6 +24,7 @@ public class KhachHang extends javax.swing.JFrame {
         btnTTCN = new javax.swing.JButton();
         btnQLSo = new javax.swing.JButton();
         btnThongBao = new javax.swing.JButton();
+        btnLichSu = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
         jpnView = new javax.swing.JPanel();
 
@@ -56,6 +57,17 @@ public class KhachHang extends javax.swing.JFrame {
         btnQLSo.setToolTipText("");
         btnQLSo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLSo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        btnLichSu.setBackground(new java.awt.Color(54, 33, 89));
+        btnLichSu.setOpaque(true);
+        btnLichSu.setBorderPainted(false);
+        btnLichSu.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnLichSu.setForeground(new java.awt.Color(255, 255, 255));
+        btnLichSu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/history.png"))); // NOI18N
+        btnLichSu.setText("Quản lý sổ tiết kiệm");
+        btnLichSu.setToolTipText("");
+        btnLichSu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLichSu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
 
         btnThongBao.setBackground(new java.awt.Color(54, 33, 89));
@@ -114,6 +126,7 @@ public class KhachHang extends javax.swing.JFrame {
                                 .addContainerGap(201, Short.MAX_VALUE))
                         .addComponent(btnTTCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnQLSo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLichSu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,11 +139,17 @@ public class KhachHang extends javax.swing.JFrame {
                                 .addComponent(btnTTCN, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnQLSo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                                 .addComponent(btnThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        btnLichSu.getAccessibleContext().setAccessibleName("Lịch sử");
+
+        jpnView.setPreferredSize(new java.awt.Dimension(752, 595));
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
@@ -140,7 +159,7 @@ public class KhachHang extends javax.swing.JFrame {
         );
         jpnViewLayout.setVerticalGroup(
                 jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 595, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,8 +175,9 @@ public class KhachHang extends javax.swing.JFrame {
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
         );
+
 
         pack();
     }
@@ -179,10 +199,14 @@ public class KhachHang extends javax.swing.JFrame {
         btnQLSo.addActionListener(listener);
     }
 
+    public void getQLSoDaTTListener(ActionListener listener){
+        btnLichSu.addActionListener(listener);
+    }
 
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnQLSo;
     private javax.swing.JButton btnTTCN;
+    private javax.swing.JButton btnLichSu;
     private javax.swing.JButton btnThongBao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

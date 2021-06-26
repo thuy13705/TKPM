@@ -333,6 +333,9 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
         });
     }
 
+    public String layMaTimKiem(){
+        return jTextField1.getText();
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -348,6 +351,10 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
 
     public void getPhieuRutListener(ActionListener listener){
         btnTatToan.addActionListener(listener);
+    }
+
+    public void getTimKiemListener(ActionListener listener){
+        jTextField1.addActionListener(listener);
     }
 
     public void getTTSoListener(MouseListener listener){
