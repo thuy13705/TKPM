@@ -1,13 +1,8 @@
 package controller;
 
-import model.dao.NguoiDungDAO;
 import model.pojo.NguoiDung;
-import ui.Admin;
-import ui.Login;
-import ui.QuanLyDSNguoiDung;
-import ui.ThongTinCaNhan;
+import ui.*;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +14,7 @@ public class AdminController {
         this.nguoiDung=nguoiDung;
         adminView.getTTCNListener(new TTCNListener());
         adminView.qlngListener(new QLNDListener());
+        adminView.bangLSListener(new LSListener());
     }
 
     public void showAdminView(){
@@ -44,5 +40,13 @@ public class AdminController {
             adminView.showPanel(quanLyDSNguoiDung);
         }
     }
+    class LSListener implements ActionListener{
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            BangLaiSuat bangLaiSuat=new BangLaiSuat();
+            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+            adminView.showPanel(bangLaiSuat);
+        }
+    }
 }

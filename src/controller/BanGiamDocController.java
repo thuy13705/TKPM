@@ -2,6 +2,8 @@ package controller;
 
 import model.pojo.NguoiDung;
 import ui.BanGiamDoc;
+import ui.BangLaiSuat;
+import ui.BaoCao;
 import ui.ThongTinCaNhan;
 
 import java.awt.event.ActionEvent;
@@ -15,6 +17,7 @@ public class BanGiamDocController {
         this.nguoiDung=nguoiDung;
         banGiamDocView.getTTCNListener(new TTCNListener());
         banGiamDocView.baoCaoListener(new BaoCaoListener());
+        banGiamDocView.bangLaiSuatListener(new LSListener());
     }
 
     public void showBanGiamDoc(){
@@ -34,7 +37,18 @@ public class BanGiamDocController {
     class BaoCaoListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            BaoCao baoCao=new BaoCao();
+            BaoCaoController baoCaoController=new BaoCaoController(baoCao);
+            banGiamDocView.showPanel(baoCao);
 
+        }
+    }
+    class LSListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            BangLaiSuat bangLaiSuat=new BangLaiSuat();
+            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
         }
     }
 }

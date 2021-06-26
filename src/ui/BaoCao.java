@@ -5,13 +5,16 @@
  */
 package ui;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author thupham
  */
-public class BaoCao extends javax.swing.JPanel {
+public class BaoCao extends javax.swing.JPanel implements ActionListener{
 
     /**
      * Creates new form BaoCao
@@ -32,8 +35,8 @@ public class BaoCao extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnNgay = new javax.swing.JButton();
+        btnThang = new javax.swing.JButton();
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
@@ -46,27 +49,9 @@ public class BaoCao extends javax.swing.JPanel {
                         .addGap(0, 536, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Hoạt động ngày");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new BaoCaoHoatDongNgay());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
+        btnNgay.setText("Hoạt động ngày");
 
-        jButton2.setText("Đóng mở");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new BaoCaoDongMo());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
+        btnThang.setText("Hoạt động tháng");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -74,9 +59,9 @@ public class BaoCao extends javax.swing.JPanel {
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(180, 180, 180)
-                                .addComponent(jButton1)
+                                .addComponent(btnNgay)
                                 .addGap(121, 121, 121)
-                                .addComponent(jButton2)
+                                .addComponent(btnThang)
                                 .addContainerGap(203, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -84,8 +69,8 @@ public class BaoCao extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addContainerGap(12, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1)
-                                        .addComponent(jButton2))
+                                        .addComponent(btnNgay)
+                                        .addComponent(btnThang))
                                 .addContainerGap())
         );
 
@@ -116,14 +101,35 @@ public class BaoCao extends javax.swing.JPanel {
                                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
         );
-    }// </editor-fold>
+    }
 
+    public void showPanel(JPanel panel){
+        jpnView.removeAll();
+        jpnView.setLayout(new BorderLayout());
+        jpnView.add(panel);
+        jpnView.validate();
+        jpnView.repaint();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void bcNgay(ActionListener listener){
+        btnNgay.addActionListener(listener);
+    }
+
+    public void bcThang(ActionListener listener){
+        btnThang.addActionListener(listener);
+    }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnNgay;
+    private javax.swing.JButton btnThang;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jpnView;
+
     // End of variables declaration
 }

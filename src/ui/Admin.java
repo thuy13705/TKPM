@@ -22,7 +22,7 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
         jSeparator1 = new javax.swing.JSeparator();
         btnQuanLyNguoiDung = new javax.swing.JButton();
         btnTTCN = new javax.swing.JButton();
-        btnThongBao = new javax.swing.JButton();
+        btnLaiSuat = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
         jpnView = new javax.swing.JPanel();
 
@@ -55,25 +55,16 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
         btnTTCN.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTTCN.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        btnThongBao.setBackground(new java.awt.Color(54, 33, 89));
-        btnThongBao.setOpaque(true);
-        btnThongBao.setBorderPainted(false);
-        btnThongBao.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        btnThongBao.setForeground(new java.awt.Color(255, 255, 255));
-        btnThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
-        btnThongBao.setText("Thông báo");
-        btnThongBao.setToolTipText("");
-        btnThongBao.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnThongBao.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnThongBao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new ThongBao());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
+        btnLaiSuat.setBackground(new java.awt.Color(54, 33, 89));
+        btnLaiSuat.setOpaque(true);
+        btnLaiSuat.setBorderPainted(false);
+        btnLaiSuat.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnLaiSuat.setForeground(new java.awt.Color(255, 255, 255));
+        btnLaiSuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
+        btnLaiSuat.setText("Lãi suất tiết kiệm");
+        btnLaiSuat.setToolTipText("");
+        btnLaiSuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLaiSuat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         btnDangXuat.setBackground(new java.awt.Color(54, 33, 89));
         btnDangXuat.setOpaque(true);
@@ -109,7 +100,7 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(btnQuanLyNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-            .addComponent(btnThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnLaiSuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -126,7 +117,7 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
                 .addGap(99, 99, 99)
                 .addComponent(btnQuanLyNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
-                .addComponent(btnThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLaiSuat, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,10 +181,14 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
     public void qlngListener(ActionListener listener){
         btnQuanLyNguoiDung.addActionListener(listener);
     }
+
+    public void bangLSListener(ActionListener listener){
+        btnLaiSuat.addActionListener(listener);
+    }
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnQuanLyNguoiDung;
     private javax.swing.JButton btnTTCN;
-    private javax.swing.JButton btnThongBao;
+    private javax.swing.JButton btnLaiSuat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
