@@ -5,16 +5,22 @@
  */
 package ui;
 
+import model.dao.LoaiSTKDAO;
+import model.pojo.LoaiSTK;
+import net.bytebuddy.implementation.LoadedTypeInitializer;
+
+import java.util.List;
+
 /**
  *
  * @author thupham
  */
-public class ThongBao extends javax.swing.JPanel {
+public class BangLaiSuat extends javax.swing.JPanel {
 
     /**
-     * Creates new form ThongBao
+     * Creates new form BangLaiSuat
      */
-    public ThongBao() {
+    public BangLaiSuat() {
         initComponents();
     }
 
@@ -28,27 +34,14 @@ public class ThongBao extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Thông báo");
+        jLabel1.setText("Lãi suất tiết kiệm");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null}
-                },
-                new String [] {
-                        "STT", "Nội dung", "Ngày"
-                }
-        ));
         jScrollPane1.setViewportView(jTable1);
-
-        jLabel2.setText("Nội dung chi tiết");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,6 +66,30 @@ public class ThongBao extends javax.swing.JPanel {
         );
     }// </editor-fold>
 
+    public void showBangLaiSuat(List<LoaiSTK> list){
+        Object[][]objects=new Object[list.size()][3];
+
+        for (int i=0; i<list.size();i++){
+            objects[i][0]=i+1;
+            objects[i][1]=list.get(i).getTenLoai();
+            objects[i][2]=list.get(i).getLaiSuat();
+        }
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(objects
+                ,
+                new String [] {
+                        "STT", "Loại sổ tiết kiệm", "Lãi suất"
+                }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                    false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+    }
 
     // Variables declaration - do not modify
     private javax.swing.JLabel jLabel1;

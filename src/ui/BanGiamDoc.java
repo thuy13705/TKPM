@@ -24,7 +24,7 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnTTCN = new JButton();
         btnBaoCao = new JButton();
         btnDangXuat = new JButton();
-        btnThongBao = new JButton();
+        btnLaiSuat = new JButton();
         jpnView = new JPanel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -55,15 +55,6 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnBaoCao.setToolTipText("");
         btnBaoCao.setHorizontalAlignment(SwingConstants.LEFT);
         btnBaoCao.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnBaoCao.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new XemBaoCao());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
 
         btnDangXuat.setBackground(new Color(54, 33, 89));
         btnDangXuat.setOpaque(true);
@@ -89,16 +80,16 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
 
         });
 
-        btnThongBao.setBackground(new Color(54, 33, 89));
-        btnThongBao.setOpaque(true);
-        btnThongBao.setBorderPainted(false);
-        btnThongBao.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
-        btnThongBao.setForeground(new Color(255, 255, 255));
-        btnThongBao.setIcon(new ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
-        btnThongBao.setText("Thông báo");
-        btnThongBao.setToolTipText("");
-        btnThongBao.setHorizontalAlignment(SwingConstants.LEFT);
-        btnThongBao.setHorizontalTextPosition(SwingConstants.RIGHT);
+        btnLaiSuat.setBackground(new Color(54, 33, 89));
+        btnLaiSuat.setOpaque(true);
+        btnLaiSuat.setBorderPainted(false);
+        btnLaiSuat.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
+        btnLaiSuat.setForeground(new Color(255, 255, 255));
+        btnLaiSuat.setIcon(new ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
+        btnLaiSuat.setText("Thông báo");
+        btnLaiSuat.setToolTipText("");
+        btnLaiSuat.setHorizontalAlignment(SwingConstants.LEFT);
+        btnLaiSuat.setHorizontalTextPosition(SwingConstants.RIGHT);
 
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
@@ -113,7 +104,7 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jLabel1)
                 .addContainerGap(188, Short.MAX_VALUE))
             .addComponent(btnDangXuat, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnThongBao, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnLaiSuat, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -127,7 +118,7 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBaoCao, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
-                .addComponent(btnThongBao, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLaiSuat, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDangXuat, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -189,10 +180,14 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnBaoCao.addActionListener(listener);
     }
 
+    public void bangLaiSuatListener(ActionListener listener){
+        btnLaiSuat.addActionListener(listener);
+    }
+
     private javax.swing.JButton btnBaoCao;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnTTCN;
-    private javax.swing.JButton btnThongBao;
+    private javax.swing.JButton btnLaiSuat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

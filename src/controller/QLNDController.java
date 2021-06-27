@@ -69,14 +69,18 @@ public class QLNDController {
             if (nguoiDung!=null){
                 int kq=quanLyDSNguoiDung.xoaND();
                 if (kq==0){
-                    boolean check=NguoiDungDAO.xoaND(nguoiDung.getMaNd());
+                    if (nguoiDung.getTinhTrang()==0)
+                        nguoiDung.setTinhTrang(1);
+                    else
+                        nguoiDung.setTinhTrang(0);
+                    boolean check=NguoiDungDAO.capNhatND(nguoiDung);
                     if (check==true){
                         List<NguoiDung> list=NguoiDungDAO.layDSNguoiDung();
                         quanLyDSNguoiDung.showDS(list);
-                        quanLyDSNguoiDung.showMessage("Xoá thành công.");
+                        quanLyDSNguoiDung.showMessage("Khoá/mở khoá thành công.");
                     }
                     else
-                        quanLyDSNguoiDung.showMessage("Xoá thất bại");
+                        quanLyDSNguoiDung.showMessage("Khoá/mở khoá thất bại thất bại");
                 }
             }
             else

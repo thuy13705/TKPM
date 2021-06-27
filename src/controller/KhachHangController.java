@@ -2,6 +2,10 @@ package controller;
 
 import model.pojo.NguoiDung;
 import ui.*;
+import ui.BangLaiSuat;
+import ui.KhachHang;
+import ui.ThongTinCaNhan;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +20,7 @@ public class KhachHangController {
         khachHangView.getTTCNListener(new TTCNListener());
         khachHangView.getQLSoListener(new QLSoListener());
         khachHangView.getQLSoDaTTListener(new QLSoDaTTListener());
+        khachHangView.bangLaiSuatListener(new LSListener());
     }
 
     public void showKhachHangView(){
@@ -52,5 +57,13 @@ public class KhachHangController {
         }
     }
 
+    class LSListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            BangLaiSuat bangLaiSuat=new BangLaiSuat();
+            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+        }
+    }
 
 }

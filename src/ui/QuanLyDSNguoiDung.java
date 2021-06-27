@@ -46,11 +46,7 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         btnSua.setText("Chỉnh sửa");
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/delete1.png"))); // NOI18N
-        btnXoa.setText("Xoá");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt){
-            }
-        });
+        btnXoa.setText("Khoá/Mở Khoá");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,7 +89,7 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         );
 
         btnXoa.setEnabled(false);
-        btnXoa.setEnabled(true);
+        btnSua.setEnabled(false);
     }
 
     public void showMessage(String msg){
@@ -182,30 +178,34 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
 
     public int xoaND(){
         String[] options = {"Chắc chắn", "Huỷ"};
-        int kq = JOptionPane.showOptionDialog(jFrame, "Bạn có chắn chắc muốn xoá người dùng này?",
+        int kq = JOptionPane.showOptionDialog(jFrame, "Bạn có chắn chắc muốn khoá/mở khoá người dùng này?",
                 "Nhấn vào lựa chọn của bạn", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
                 null, options, options[0]);
       return kq;
     }
 
     public void showDS(List<NguoiDung> list){
-        Object[][]objects=new Object[list.size()][4];
+        Object[][]objects=new Object[list.size()][5];
 
         for (int i=0; i<list.size(); i++){
             objects[i][0]=i+1;
             objects[i][1]=list.get(i).getTenNd();
             objects[i][2]=list.get(i).getUsername();
             objects[i][3]=list.get(i).getMaNd();
+            if (list.get(i).getTinhTrang()==0)
+                objects[i][4]="Hoạt động";
+            else
+                objects[i][4]="Bị Khoá.";
         }
 
         tableND.setModel(new javax.swing.table.DefaultTableModel(objects
                 ,
                 new String [] {
-                        "STT", "Tên người dùng", "Tên đăng nhập", "Mã người dùng"
+                        "STT", "Tên người dùng", "Tên đăng nhập", "Mã người dùng","Tình Trạng"
                 }
         ) {
             boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+                    false, false, false, false,false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

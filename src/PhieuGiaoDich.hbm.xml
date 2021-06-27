@@ -12,7 +12,7 @@
             <column name="NgayGiaoDich" sql-type="date"/>
         </property>
         <property name="soTien">
-            <column name="SoTien" sql-type="decimal(30,2)"/>
+            <column name="sotien" sql-type="decimal(30,2)" precision="30" scale="2"/>
         </property>
         <many-to-one class="model.pojo.NguoiDung" name="maND"
                      fetch="select">

@@ -1,6 +1,7 @@
 package controller;
 
 import model.pojo.NguoiDung;
+import ui.BangLaiSuat;
 import ui.KiemSoatVien;
 import ui.ThongTinCaNhan;
 
@@ -16,6 +17,7 @@ public class KiemSoatVienController {
         kiemSoatVienView.getTTCN(new TTCNListener());
         kiemSoatVienView.qLDuyetSo(new QLDSListener());
         kiemSoatVienView.qLPhongToa(new QLPTListener());
+        kiemSoatVienView.bangLaiSuatListener(new LSListener());
     }
 
     public void showKiemSoatVienView(){
@@ -45,6 +47,15 @@ public class KiemSoatVienController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+        }
+    }
+
+    class LSListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            BangLaiSuat bangLaiSuat=new BangLaiSuat();
+            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
         }
     }
 }
