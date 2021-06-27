@@ -5,15 +5,17 @@ import model.pojo.NguoiDung;
 import org.mindrot.jbcrypt.BCrypt;
 import ui.Login;
 
+import java.math.BigDecimal;
+
 public class Main {
     public static void main(final String[] args) {
 //        String pass= BCrypt.hashpw("admin",BCrypt.gensalt());
-//        NguoiDung admin=new NguoiDung("admin"," ","215234234","0986798098","","admin",pass,0,0);
+//       NguoiDung admin=new NguoiDung("admin"," ","215234234","0986798098","","admin",pass,0, BigDecimal.ZERO);
 //        boolean check=NguoiDungDAO.ThemND(admin);
 //        if (check)
 //            System.out.println("Thanh cong");
 //        else
-//            System.out.println("Loi");
+//           System.out.println("Loi");
 
         Login login=new Login();
         LoginController loginController=new LoginController(login);

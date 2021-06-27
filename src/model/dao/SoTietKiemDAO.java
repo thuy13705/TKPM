@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class SoTietKiemDAO {
+
     public static List<SoTietKiem> layDSSTK(){
         List<SoTietKiem> ds=null;
         SessionFactory factory= HibernateUtil.getSessionFactory();
@@ -124,4 +125,25 @@ public class SoTietKiemDAO {
         return true;
     }
 
+    public static SoTietKiem layMaxID() {
+        int max = 0;
+        List<SoTietKiem> list = null;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+            String hql = "select max(so.maSo) from SoTietKiem so";
+            Query query = session.createQuery(hql);
+            Object objects = (Object) ((org.hibernate.query.Query<?>) query).uniqueResult();
+            max = (int) objects;
+
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        if(max == 0)
+            return null;
+        return SoTietKiemDAO.laySTKID(max);
+    }
 }

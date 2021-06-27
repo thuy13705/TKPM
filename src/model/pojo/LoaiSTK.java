@@ -1,12 +1,24 @@
 package model.pojo;
 
+
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Objects;
+
 
 public class LoaiSTK {
     private int loaiSo;
     private String tenLoai;
     private double laiSuat;
     private Integer tinhTrang;
+    private Integer thoiHan;
+
+    public Integer getThoiHan() {
+        return thoiHan;
+    }
+
+    public void setThoiHan(Integer thoiHan) {
+        this.thoiHan = thoiHan;
+    }
 
     public Integer getTinhTrang() {
         return tinhTrang;
@@ -26,6 +38,7 @@ public class LoaiSTK {
     public LoaiSTK() {
 
     }
+
 
     public int getLoaiSo() {
         return loaiSo;

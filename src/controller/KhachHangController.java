@@ -1,12 +1,12 @@
 package controller;
 
 import model.pojo.NguoiDung;
-import ui.BangLaiSuat;
-import ui.KhachHang;
-import ui.ThongTinCaNhan;
+import ui.*;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class KhachHangController {
     private NguoiDung nguoiDung;
@@ -15,7 +15,8 @@ public class KhachHangController {
         this.khachHangView=KhachHangView;
         this.nguoiDung=nguoiDung;
         khachHangView.getTTCNListener(new TTCNListener());
-        khachHangView.qlSoListener(new QLSoListener());
+        khachHangView.getQLSoListener(new QLSoListener());
+        khachHangView.getQLSoDaTTListener(new QLSoDaTTListener());
         khachHangView.bangLaiSuatListener(new LSListener());
     }
 
@@ -37,15 +38,30 @@ public class KhachHangController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            QuanLySoTietKiem quanLySoTietKiem = new QuanLySoTietKiem(nguoiDung, khachHangView);
+            QLSoController qlSoController = new QLSoController(nguoiDung,quanLySoTietKiem);
+            khachHangView.showPanel(quanLySoTietKiem);
         }
     }
+
+    class QLSoDaTTListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DanhSachSoDaTT quanLySoTietKiem = new DanhSachSoDaTT(nguoiDung, khachHangView);
+            QLSoDaTTController qlSoDaTTController = new QLSoDaTTController(nguoiDung,quanLySoTietKiem);
+            khachHangView.showPanel(quanLySoTietKiem);
+        }
+    }
+
     class LSListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             BangLaiSuat bangLaiSuat=new BangLaiSuat();
             BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+            khachHangView.showPanel(bangLaiSuat);
         }
     }
+
 }

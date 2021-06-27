@@ -1,13 +1,14 @@
 package model.pojo;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
 public class SoTietKiem {
     private int maSo;
     private Date ngayMoSo;
+    private Date ngayDenHan;
     private BigDecimal soTienGui;
     private LoaiSTK loaiSo;
     private NguoiDung maND;
@@ -61,6 +62,14 @@ public class SoTietKiem {
 
     public void setNgayMoSo(Date ngayMoSo) {
         this.ngayMoSo = ngayMoSo;
+    }
+
+    public Date getNgayDenHan() {
+        return ngayDenHan;
+    }
+
+    public void setNgayDenHan(Date ngayDenHan) {
+        this.ngayDenHan = ngayDenHan;
     }
 
     public BigDecimal getSoTienGui() {
