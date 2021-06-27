@@ -65,7 +65,7 @@ public class DanhSachSoDaTT extends javax.swing.JPanel implements ActionListener
 
         jLabel2.setText("Khách hàng:");
 
-        jlbMaKH.setText("jLabel16");
+        jlbMaKH.setText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,19 +101,19 @@ public class DanhSachSoDaTT extends javax.swing.JPanel implements ActionListener
 
         jLabel14.setText("Số tiền lãi:");
 
-        jlbMaSo.setText("Maso");
+        jlbMaSo.setText("");
 
-        jlbSoTienGui.setText("Số tiền");
+        jlbSoTienGui.setText("");
 
-        jlbLoaiTK.setText("loại tk");
+        jlbLoaiTK.setText("");
 
-        jlbSoTienLai.setText("Số tiền lãi");
+        jlbSoTienLai.setText("");
 
-        jlbNgayGui.setText("Ngày gửi");
+        jlbNgayGui.setText("");
 
-        jlbNgayRut.setText("Ngày rút");
+        jlbNgayRut.setText("");
 
-        jlbTong.setText("Tổng tiền nhận ");
+        jlbTong.setText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -334,5 +334,5 @@ public class DanhSachSoDaTT extends javax.swing.JPanel implements ActionListener
     public void valueChanged(ListSelectionEvent e) {
 
     }
-    // End of variables declaration//GEN-END:variables
+
 }

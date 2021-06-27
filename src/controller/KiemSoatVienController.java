@@ -16,7 +16,6 @@ public class KiemSoatVienController {
         kiemSoatVienView.qLDuyetSo(new QLDSListener());
         kiemSoatVienView.qLPhongToa(new QLPTListener());
         kiemSoatVienView.bangLaiSuatListener(new LSListener());
-        kiemSoatVienView.logoutListener(new LogoutListener());
     }
 
     public void showKiemSoatVienView(){
@@ -37,15 +36,18 @@ public class KiemSoatVienController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            DanhSachChoDuyet danhSachChoDuyet = new DanhSachChoDuyet(kiemSoatVienView);
+            DuyetSoController duyetSoController = new DuyetSoController(danhSachChoDuyet);
+            kiemSoatVienView.showPanel(danhSachChoDuyet);
         }
     }
 
     class QLPTListener implements ActionListener{
-
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            PhongToaSo phongToaSo = new PhongToaSo(kiemSoatVienView);
+            PhongToaController phongToaController = new PhongToaController(phongToaSo);
+            kiemSoatVienView.showPanel(phongToaSo);
         }
     }
 
@@ -53,22 +55,8 @@ public class KiemSoatVienController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            QuyDinhLaiSuat quyDinhLaiSuat=new QuyDinhLaiSuat();
-            QDLSController qdlsController=new QDLSController(quyDinhLaiSuat);
-            kiemSoatVienView.showPanel(quyDinhLaiSuat);
-        }
-    }
-    class LogoutListener implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int kq=kiemSoatVienView.logout();
-            if (kq==0){
-                kiemSoatVienView.setVisible(false);
-                Login login=new Login();
-                LoginController loginController=new LoginController(login);
-                loginController.showLoginView();
-            }
+            BangLaiSuat bangLaiSuat=new BangLaiSuat();
+            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
         }
     }
 }

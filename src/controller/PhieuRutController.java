@@ -6,6 +6,7 @@ import model.pojo.NguoiDung;
 import model.pojo.PhieuGiaoDich;
 import model.pojo.SoTietKiem;
 import ui.PhieuRut;
+import ui.QuanLySoTietKiem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,24 +14,19 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class PhieuRutController {
+    QuanLySoTietKiem quanLySoTietKiemView;
     private NguoiDung nguoiDung;
     PhieuRut phieuRutView;
-    List<String> list = new ArrayList<String>();
     Date ngayGD = null;
     private SoTietKiem soTietKiem;
     BigDecimal soTien;
 
-
     public PhieuRutController(NguoiDung nguoiDung, SoTietKiem soTietKiem, PhieuRut phieuRutView) {
         this.nguoiDung = nguoiDung;
         this.soTietKiem = soTietKiem;
-        this.list = list;
         this.phieuRutView = phieuRutView;
         tinhTong(soTietKiem);
         phieuRutView.show(soTietKiem, soTien);
@@ -79,16 +75,25 @@ public class PhieuRutController {
                     phieuRut.setSoTien(soTien);
                     boolean check = PhieuGiaoDichDAO.themPhieu(phieuRut);
                     if (check == true) {
+
                         phieuRutView.showMessage("Tất toán sổ thành công.");
                         nguoiDung.setSoDu(soTietKiem.getMaND().getSoDu().add( soTien));
                         NguoiDungDAO.capNhatND(nguoiDung);
                         phieuRutView.setVisible(false);
+                        List<SoTietKiem> list = new ArrayList<>();
+                        Iterator<SoTietKiem> list1 = nguoiDung.getSoTKs().iterator();
+                        System.out.println(nguoiDung.getMaNd());
+
                     } else
                         phieuRutView.showMessage("Tất toán sổ thất bại");
                 } else
                     phieuRutView.showMessage("Sổ tiết kiệm không tồn tại.");
             }
+
         }
     }
+
+
+
 
 }

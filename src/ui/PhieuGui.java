@@ -139,11 +139,9 @@ public class PhieuGui extends javax.swing.JDialog {
         pack();
     }
 
-    public SoTietKiem themPhieu(){
+    public SoTietKiem themPhieu(List<LoaiSTK> list){
         SoTietKiem so = new SoTietKiem();
         Date date = null;
-        LoaiSTK loaiSTK = LoaiSTKDAO.laySTKID(boxLoaiTK.getSelectedIndex());
-        so.setLoaiSo(loaiSTK);
         so.setSoTienGui(BigDecimal.valueOf(Long.parseLong(txtSoTien.getText())));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -151,10 +149,17 @@ public class PhieuGui extends javax.swing.JDialog {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        String loaiTK = boxLoaiTK.getItemAt(boxLoaiTK.getSelectedIndex());
+        for(LoaiSTK loai:list){
+            if(loaiTK.equals(loai.getTenLoai())){
+                so.setLoaiSo(loai);
+            }
+        }
         so.setNgayMoSo(date);
         so.setTinhTrang(0);
         return so;
     }
+
 
     public void show(NguoiDung nguoiDung){
         KhachHang.setText(nguoiDung.getTenNd());

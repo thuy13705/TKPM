@@ -61,11 +61,11 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
         jlbMaSo = new javax.swing.JLabel();
         jlbTenKH = new javax.swing.JLabel();
         txtSoTienGui = new javax.swing.JTextField();
-        boxLoaiTK = new javax.swing.JComboBox<>();
         txtTienLai = new javax.swing.JTextField();
         txtNgayDenHan = new javax.swing.JTextField();
         txtNgayGui = new javax.swing.JTextField();
         txtTong = new javax.swing.JTextField();
+        txtLoaiTK = new javax.swing.JTextField();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Danh sách sổ tiết kiệm");
@@ -74,7 +74,7 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
 
         jLabel3.setText("Số dư: ");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/add.png")));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/add.png"))); // NOI18N
         jButton1.setText("Mở sổ");
 
 
@@ -135,13 +135,10 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
         jLabel14.setText("Số tiền lãi dự định:");
 
         btnTatToan.setText("Tất toán");
-        btnTatToan.setEnabled(false);
 
         jlbMaSo.setText("Maso");
 
         jlbTenKH.setText("TenKhach");
-
-        boxLoaiTK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -161,10 +158,10 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jlbTenKH)
                                         .addComponent(txtSoTienGui, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(boxLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtTienLai, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlbMaSo, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                                        .addComponent(jlbMaSo, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel9)
@@ -197,14 +194,14 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jLabel11)
                                                         .addComponent(jlbTenKH))
-                                                .addGap(18, 18, 18)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jLabel8)
                                                         .addComponent(txtSoTienGui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel10)
-                                                        .addComponent(boxLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(txtLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jLabel14)
@@ -222,7 +219,7 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jLabel15)
                                                         .addComponent(txtTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                                 .addComponent(btnTatToan)
                                 .addGap(17, 17, 17))
         );
@@ -269,7 +266,7 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
                                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
         );
-    }
+    }// </editor-fold>                        
 
     public void showMessage(String msg){
         JOptionPane.showMessageDialog(this,msg);
@@ -287,11 +284,7 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
         return soTietKiem;
     }
 
-    public void showLoaiTK(List<LoaiSTK> list) {
-        for (LoaiSTK loaiTK : list) {
-            boxLoaiTK.addItem(loaiTK.getTenLoai());
-        }
-    }
+
 
     public void showNguoiDung(NguoiDung nguoiDung){
         jlbMaKH.setText(String.valueOf(nguoiDung.getMaNd()));
@@ -302,7 +295,7 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
         jlbMaSo.setText(String.valueOf(soTietKiem.getMaSo()));
         jlbTenKH.setText(soTietKiem.getMaND().getTenNd());
         txtSoTienGui.setText(String.valueOf(soTietKiem.getSoTienGui()));
-        boxLoaiTK.setSelectedIndex(soTietKiem.getLoaiSo().getLoaiSo());
+        txtLoaiTK.setText(soTietKiem.getLoaiSo().getTenLoai());
         txtNgayGui.setText(soTietKiem.getNgayMoSo().toString());
         txtNgayDenHan.setText(soTietKiem.getNgayDenHan().toString());
         txtTienLai.setText(list.get(0));
@@ -367,7 +360,7 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
 
 
 
-    private javax.swing.JComboBox<String> boxLoaiTK;
+    private javax.swing.JTextField txtLoaiTK;
     private javax.swing.JButton btnTatToan;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

@@ -51,8 +51,7 @@ public class LoaiSTKDAO {
         Session session = HibernateUtil.getSessionFactory()
                 .openSession();
         try {
-            loaiSTK = (LoaiSTK) session.get(LoaiSTK.class,
-                    id);
+            loaiSTK = (LoaiSTK) session.get(LoaiSTK.class, id);
         } catch (HibernateException ex) {
             //Log the exception
             System.err.println(ex);
@@ -121,5 +120,22 @@ public class LoaiSTKDAO {
             session.close();
         }
         return true;
+    }
+    /** Lấy loại Sổ tiết kiệm theo tên */
+    public static LoaiSTK laySTKTen(String ten) {
+        List<LoaiSTK> ds = null;
+        Session session = HibernateUtil.getSessionFactory()
+                .openSession();
+        try {
+            String hql = "from LoaiSTK where tenLoai like " + ten;
+            Query query = session.createQuery(hql);
+            ds = (List<LoaiSTK>) ((org.hibernate.query.Query<?>) query).list();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds.get(1);
     }
 }

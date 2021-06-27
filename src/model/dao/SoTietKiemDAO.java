@@ -146,4 +146,39 @@ public class SoTietKiemDAO {
             return null;
         return SoTietKiemDAO.laySTKID(max);
     }
+    /**Lấy danh sách sổ chưa được duyệt*/
+    public static List<SoTietKiem> layDSSTKChuaDuyet(){
+        List<SoTietKiem> ds=null;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+            String hql = "from SoTietKiem where tinhTrang = 0";
+            Query query = session.createQuery(hql);
+            ds = (List<SoTietKiem>) ((org.hibernate.query.Query<?>) query).list();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds;
+    }
+
+    /**Lấy danh sách sổ đang hoạt động*/
+    public static List<SoTietKiem> layDSSTKDangHoatDong(){
+        List<SoTietKiem> ds=null;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+            String hql = "from SoTietKiem where tinhTrang = 1";
+            Query query = session.createQuery(hql);
+            ds = (List<SoTietKiem>) ((org.hibernate.query.Query<?>) query).list();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds;
+    }
 }
