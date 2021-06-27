@@ -4,6 +4,7 @@ import model.dao.LoaiSTKDAO;
 import model.dao.NguoiDungDAO;
 import model.dao.PhieuGiaoDichDAO;
 import model.dao.SoTietKiemDAO;
+import model.pojo.LoaiSTK;
 import model.pojo.NguoiDung;
 import model.pojo.PhieuGiaoDich;
 import model.pojo.SoTietKiem;
@@ -16,18 +17,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 public class PhieuGuiController {
     private NguoiDung nguoiDung;
     PhieuGui phieuGuiView;
-
+    List<LoaiSTK> list = LoaiSTKDAO.layDSLoaiSTK();
 
     public PhieuGuiController(NguoiDung nguoiDung, PhieuGui phieuGuiView) {
         this.nguoiDung = nguoiDung;
         this.phieuGuiView = phieuGuiView;
         phieuGuiView.show(nguoiDung);
-        phieuGuiView.showLoaiTK(LoaiSTKDAO.layDSLoaiSTK());
+        phieuGuiView.showLoaiTK(list);
         phieuGuiView.xacNhanListener((ActionListener)new PhieuGuiController.xacNhanPhieuGuiListener());
 
     }
@@ -36,7 +38,7 @@ public class PhieuGuiController {
     class xacNhanPhieuGuiListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            SoTietKiem soTietKiem = phieuGuiView.themPhieu();
+            SoTietKiem soTietKiem = phieuGuiView.themPhieu(list);
             if (kiemTraSoTienGui(soTietKiem) == true) {
                 if (kiemTraSoDu(nguoiDung, soTietKiem.getSoTienGui()) == false) {
                     soTietKiem.setMaND(nguoiDung);
@@ -59,9 +61,7 @@ public class PhieuGuiController {
                             if (check == false) {
                                 phieuGuiView.showMessage("Không thể lập phiếu gửi");
                             }
-                            phieuGuiView.showMessage("Mở sổ tiết kiệm thành công.");
-                            nguoiDung.setSoDu(nguoiDung.getSoDu().subtract(phieuGiaoDich.getSoTien()));
-                            NguoiDungDAO.capNhatND(nguoiDung);
+                            phieuGuiView.showMessage("Mở sổ thành công, Sổ đã được thêm vào danh sách chờ duyệt");
                             phieuGuiView.setVisible(false);
                         } else
                             phieuGuiView.showMessage("Mở sổ thất bại");
@@ -72,7 +72,7 @@ public class PhieuGuiController {
                 }
             }else{
                 phieuGuiView.showMessage("Số tiền phải >= 1000000");
-        }
+            }
 
         }
     }
@@ -82,14 +82,10 @@ public class PhieuGuiController {
         Calendar cNgayGui = Calendar.getInstance();
         Calendar cNgayDenHan = Calendar.getInstance();
         cNgayGui.setTime(soTietKiem.getNgayMoSo());
-        String tenLoai = soTietKiem.getLoaiSo().getTenLoai();
-        if (tenLoai.equals("1 tháng")) {
-            cNgayDenHan.roll(Calendar.MONTH, 1);
-        }
-        if (tenLoai.equals("6 tháng")) {
-            cNgayDenHan.roll(Calendar.MONTH, 6);
-        }
-        if (tenLoai.equals("12 tháng")) {
+        int thoiHan = soTietKiem.getLoaiSo().getThoiHan();
+        if(thoiHan < 12) {
+            cNgayDenHan.roll(Calendar.MONTH, thoiHan);
+        }else if(thoiHan == 12){
             cNgayDenHan.roll(Calendar.YEAR, 1);
         }
         String ngayDenHan = format.format(cNgayDenHan.getTime());

@@ -46,15 +46,8 @@ public class KiemSoatVien extends javax.swing.JFrame implements ActionListener {
         btnTTCN.setToolTipText("");
         btnTTCN.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTTCN.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnTTCN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                jpnView.removeAll();
-//                jpnView.setLayout(new BorderLayout());
-//                jpnView.add(new ThongTinCaNhan());
-//                jpnView.validate();
-//                jpnView.repaint();
-            }
-        });
+
+
 
         btnQLDuyetSo.setBackground(new java.awt.Color(54, 33, 89));
         btnQLDuyetSo.setOpaque(true);
@@ -66,15 +59,7 @@ public class KiemSoatVien extends javax.swing.JFrame implements ActionListener {
         btnQLDuyetSo.setToolTipText("");
         btnQLDuyetSo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLDuyetSo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnQLDuyetSo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new DanhSachChoDuyet());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
+
 
         btnLaiSuat.setBackground(new java.awt.Color(54, 33, 89));
         btnLaiSuat.setOpaque(true);
@@ -109,15 +94,7 @@ public class KiemSoatVien extends javax.swing.JFrame implements ActionListener {
         btnQLPhongToa.setToolTipText("");
         btnQLPhongToa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLPhongToa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnQLPhongToa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                jpnView.setLayout(new BorderLayout());
-                jpnView.add(new PhongToaSo());
-                jpnView.validate();
-                jpnView.repaint();
-            }
-        });
+
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

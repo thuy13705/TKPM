@@ -33,7 +33,6 @@ public class QLSoController {
         this.nguoiDung = nguoiDung;
         this.quanLySoTietKiemView = quanLySoTietKiemView;
         quanLySoTietKiemView.getPhieuGuiListener(new QLSoController.PhieuGuiListener());
-        quanLySoTietKiemView.showLoaiTK(LoaiSTKDAO.layDSLoaiSTK());
         quanLySoTietKiemView.getPhieuRutListener(new QLSoController.PhieuRutListener());
         quanLySoTietKiemView.getTTSoListener(new QLSoController.TTSoListener());
         quanLySoTietKiemView.getTimKiemListener(new QLSoController.TimKiemListener());
