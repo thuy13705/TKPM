@@ -7,7 +7,11 @@ public class BangThamSo {
     private String tenThamSo;
     private String kieu;
     private String giaTri;
-    private byte tinhTrang;
+    private boolean tinhTrang;
+
+    public BangThamSo() {
+
+    }
 
     public int getMaThamSo() {
         return maThamSo;
@@ -41,11 +45,18 @@ public class BangThamSo {
         this.giaTri = giaTri;
     }
 
-    public byte getTinhTrang() {
+    public boolean getTinhTrang() {
         return tinhTrang;
     }
 
-    public void setTinhTrang(byte tinhTrang) {
+    public void setTinhTrang(boolean tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
+
+    public BangThamSo(String tenThamSo, String kieu, String giaTri, boolean tinhTrang) {
+        this.tenThamSo = tenThamSo;
+        this.kieu = kieu;
+        this.giaTri = giaTri;
         this.tinhTrang = tinhTrang;
     }
 

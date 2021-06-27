@@ -18,7 +18,7 @@
             <column name="GiaTri" sql-type="varchar(255)"/>
         </property>
         <property name="tinhTrang">
-            <column name="TinhTrang" sql-type="tinyint(1)"/>
+            <column name="TinhTrang" sql-type="boolean"/>
         </property>
     </class>
 </hibernate-mapping>

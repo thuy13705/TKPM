@@ -1,10 +1,7 @@
 package controller;
 
 import model.pojo.NguoiDung;
-import ui.BanGiamDoc;
-import ui.BangLaiSuat;
-import ui.BaoCao;
-import ui.ThongTinCaNhan;
+import ui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,8 +44,11 @@ public class BanGiamDocController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            BangLaiSuat bangLaiSuat=new BangLaiSuat();
-            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+//            BangLaiSuat bangLaiSuat=new BangLaiSuat();
+//            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+            QuyDinhLaiSuat quyDinhLaiSuat=new QuyDinhLaiSuat();
+            QDLSController qdlsController=new QDLSController(quyDinhLaiSuat);
+            banGiamDocView.showPanel(quyDinhLaiSuat);
         }
     }
 }
