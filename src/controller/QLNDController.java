@@ -38,7 +38,7 @@ public class QLNDController {
                    quanLyDSNguoiDung.showMessage("Thêm thất bại");
            }
            else
-               quanLyDSNguoiDung.showMessage("Người dùng không tồn tại.");
+               quanLyDSNguoiDung.showMessage("Thêm thất bại.");
         }
     }
 
@@ -48,14 +48,19 @@ public class QLNDController {
             NguoiDung nguoiDung=quanLyDSNguoiDung.getSelectedRow();
             if (nguoiDung!=null){
                 nguoiDung=quanLyDSNguoiDung.suaND(nguoiDung);
-                boolean check=NguoiDungDAO.capNhatND(nguoiDung);
-                if (check==true){
-                    List<NguoiDung> list=NguoiDungDAO.layDSNguoiDung();
-                    quanLyDSNguoiDung.showDS(list);
-                    quanLyDSNguoiDung.showMessage("Cập nhật thành công.");
-                }
-                else
-                    quanLyDSNguoiDung.showMessage("Cập nhật thất bại");
+               if (nguoiDung!=null){
+                   boolean check=NguoiDungDAO.capNhatND(nguoiDung);
+                   if (check==true){
+                       List<NguoiDung> list=NguoiDungDAO.layDSNguoiDung();
+                       quanLyDSNguoiDung.showDS(list);
+                       quanLyDSNguoiDung.showMessage("Cập nhật thành công.");
+                   }
+                   else
+                       quanLyDSNguoiDung.showMessage("Cập nhật thất bại");
+               }
+               else {
+                   quanLyDSNguoiDung.showMessage("Cập nhật thất bại");
+               }
             }
             else
                 quanLyDSNguoiDung.showMessage("Người dùng không tồn tại.");

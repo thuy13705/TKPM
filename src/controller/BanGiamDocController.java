@@ -15,6 +15,7 @@ public class BanGiamDocController {
         banGiamDocView.getTTCNListener(new TTCNListener());
         banGiamDocView.baoCaoListener(new BaoCaoListener());
         banGiamDocView.bangLaiSuatListener(new LSListener());
+        banGiamDocView.logoutListener(new LogoutListener());
     }
 
     public void showBanGiamDoc(){
@@ -44,11 +45,23 @@ public class BanGiamDocController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            BangLaiSuat bangLaiSuat=new BangLaiSuat();
-//            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
             QuyDinhLaiSuat quyDinhLaiSuat=new QuyDinhLaiSuat();
             QDLSController qdlsController=new QDLSController(quyDinhLaiSuat);
             banGiamDocView.showPanel(quyDinhLaiSuat);
+        }
+    }
+
+    class LogoutListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int kq=banGiamDocView.logout();
+            if (kq==0){
+                banGiamDocView.setVisible(false);
+                Login login=new Login();
+                LoginController loginController=new LoginController(login);
+                loginController.showLoginView();
+            }
         }
     }
 }

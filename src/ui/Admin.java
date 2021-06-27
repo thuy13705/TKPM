@@ -61,7 +61,7 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
         btnLaiSuat.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnLaiSuat.setForeground(new java.awt.Color(255, 255, 255));
         btnLaiSuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
-        btnLaiSuat.setText("Lãi suất tiết kiệm");
+        btnLaiSuat.setText("Lãi suất và Quy định");
         btnLaiSuat.setToolTipText("");
         btnLaiSuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnLaiSuat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -76,19 +76,6 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
         btnDangXuat.setToolTipText("");
         btnDangXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpnView.removeAll();
-                String[] options = {"Chắc chắn", "Huỷ"};
-                int kq = JOptionPane.showOptionDialog(null, "Bạn có chắn chắc muốn thoát khỏi hệ thống?",
-                        "Nhấn vào lựa chọn của bạn", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                        null, options, options[0]);
-                if (kq == 0) {
-                    System.exit(0);
-                }
-            }
-
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,6 +156,15 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
         jpnView.repaint();
     }
 
+    public int logout(){
+        jpnView.removeAll();
+        String[] options = {"Chắc chắn", "Huỷ"};
+        int kq = JOptionPane.showOptionDialog(null, "Bạn có chắn chắc muốn thoát khỏi hệ thống?",
+                "Nhấn vào lựa chọn của bạn", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                null, options, options[0]);
+        return kq;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -184,6 +180,10 @@ public class Admin extends javax.swing.JFrame implements ActionListener {
 
     public void bangLSListener(ActionListener listener){
         btnLaiSuat.addActionListener(listener);
+    }
+
+    public void logoutListener(ActionListener listener){
+        btnDangXuat.addActionListener(listener);
     }
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnQuanLyNguoiDung;

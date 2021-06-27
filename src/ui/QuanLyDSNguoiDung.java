@@ -8,10 +8,15 @@ import org.mindrot.jbcrypt.BCrypt;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
 
 public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListener, ListSelectionListener {
@@ -93,6 +98,66 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         JOptionPane.showMessageDialog(jFrame,msg);
     }
 
+    public NguoiDung getSelectedRow() {
+        NguoiDung nguoiDung=null;
+        int row = tableND.getSelectedRow();
+        if (row >= 0) {
+            int id=Integer.valueOf(tableND.getModel().getValueAt(row,3).toString());
+            nguoiDung=NguoiDungDAO.layNguoiDungID(id);
+        }
+        return nguoiDung;
+    }
+
+    private boolean isValidateTen(String ten){
+        if (ten.equals("")){
+            showMessage("Tên không được trống");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidateCMND(String cmnd){
+        if(cmnd == null || cmnd.equals("")) {
+            showMessage("CMND/CCCD không được rỗng");
+            return false;
+        }
+        else {
+            if (cmnd.length()==9 || cmnd.length()==12){
+                try {
+                    long aLong = Long.parseLong(cmnd);
+                    return true;
+                } catch (NumberFormatException e) {
+                    showMessage("CMND/CCCD chỉ chứa số.");
+                }
+            }
+            else{
+                showMessage("CMND/CCCD chỉ chứa 9 hoặc 12 số");
+            }
+        }
+        return false;
+    }
+
+    private boolean isValidateSDT(String sdt){
+        if(sdt == null || sdt.equals("")) {
+            showMessage("SĐT không được rỗng");
+            return false;
+        }
+        else {
+            if (sdt.length()==10){
+                try {
+                    long aLong = Long.parseLong(sdt);
+                    return true;
+                } catch (NumberFormatException e) {
+                    showMessage("SĐT chỉ chứa số.");
+                }
+            }
+            else{
+                showMessage("SĐT chỉ chứa 10 số");
+            }
+        }
+        return false;
+    }
+
     public NguoiDung themND(){
         NguoiDung nguoiDung=null;
         JTextField txtTen=new JTextField();
@@ -102,6 +167,7 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         JTextField txtSDT=new JTextField();
         JTextField txtSoDu=new JTextField();
         JComboBox loaiNDBox=new JComboBox();
+
         loaiNDBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ban Giám Đốc", "Kiểm Soát Viên","Khách Hàng" }));
 
         Object[] inputFields = {"Họ và Tên:", txtTen, "Địa chỉ:", txtDiaChi,"Email: ",txtEmail,
@@ -128,11 +194,11 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
                     break;
             }
             String pass= BCrypt.hashpw(username,BCrypt.gensalt());
-            if (!txtCMND.getText().equals("") && !txtTen.getText().equals("") && !txtSDT.getText().equals("")){
+            if (isValidateTen(txtTen.getText()) && isValidateCMND(txtCMND.getText()) && isValidateSDT(txtSDT.getText())){
                 nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText(),txtEmail.getText(),username,pass,loai, BigDecimal.valueOf(Long.parseLong(txtSoDu.getText())));
             }
             else
-                showMessage("Tên, CMND/CCCD, SĐT không được trống.");
+                return null;
         }
         return nguoiDung;
     }
@@ -140,8 +206,8 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
     public NguoiDung suaND(NguoiDung nguoiDung){
         JTextField txtTen=new JTextField(nguoiDung.getTenNd());
         JTextField txtDiaChi=new JTextField(nguoiDung.getDiaChi());
-        JTextField txtCMND=new JTextField(nguoiDung.getCmnd());
-        JTextField txtSDT=new JTextField(nguoiDung.getSdt());
+        JTextField txtCMND=new JFormattedTextField(nguoiDung.getCmnd());
+        JTextField txtSDT=new JFormattedTextField(nguoiDung.getSdt());
 
         Object[] inputFields = {"Họ và Tên:", txtTen, "Địa chỉ:", txtDiaChi,
                 "CMND/CCCD:", txtCMND,"SĐT:",txtSDT};
@@ -149,25 +215,16 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
         int option = JOptionPane.showConfirmDialog(jFrame, inputFields, "Sửa người dùng", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
         if (option == JOptionPane.OK_OPTION) {
-            if (!txtCMND.getText().equals("") && !txtTen.getText().equals("") && !txtSDT.getText().equals("")){
+            if (isValidateTen(txtTen.getText()) && isValidateCMND(txtCMND.getText()) && isValidateSDT(txtSDT.getText())){
                 nguoiDung.setTenNd(txtTen.getText());
                 nguoiDung.setSdt(txtSDT.getText());
-                nguoiDung.setCmnd(txtCMND.getText());
+                nguoiDung.setDiaChi(txtDiaChi.getText());
                 nguoiDung.setCmnd(txtCMND.getText());
             }
             else
-                showMessage("Tên, CMND/CCCD, SĐT không được trống.");
+                nguoiDung=null;
         }
-        return nguoiDung;
-    }
 
-    public NguoiDung getSelectedRow() {
-        NguoiDung nguoiDung=null;
-        int row = tableND.getSelectedRow();
-        if (row >= 0) {
-            int id=Integer.valueOf(tableND.getModel().getValueAt(row,3).toString());
-            nguoiDung=NguoiDungDAO.layNguoiDungID(id);
-        }
         return nguoiDung;
     }
 
@@ -221,9 +278,11 @@ public class QuanLyDSNguoiDung extends javax.swing.JPanel implements ActionListe
     public void themListener(ActionListener listener) {
         btnThem.addActionListener(listener);
     }
+
     public void suaListener(ActionListener listener) {
         btnSua.addActionListener(listener);
     }
+
     public void xoaListener(ActionListener listener) {
         btnXoa.addActionListener(listener);
     }

@@ -66,19 +66,6 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         btnDangXuat.setToolTipText("");
         btnDangXuat.setHorizontalAlignment(SwingConstants.LEFT);
         btnDangXuat.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnDangXuat.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jpnView.removeAll();
-                String[] options = {"Chắc chắn", "Huỷ"};
-                int kq = JOptionPane.showOptionDialog(null, "Bạn có chắn chắc muốn thoát khỏi hệ thống?",
-                        "Nhấn vào lựa chọn của bạn", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                        null, options, options[0]);
-                if (kq == 0) {
-                    System.exit(0);
-                }
-            }
-
-        });
 
         btnLaiSuat.setBackground(new Color(54, 33, 89));
         btnLaiSuat.setOpaque(true);
@@ -166,7 +153,14 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
         jpnView.validate();
         jpnView.repaint();
     }
-
+    public int logout(){
+        jpnView.removeAll();
+        String[] options = {"Chắc chắn", "Huỷ"};
+        int kq = JOptionPane.showOptionDialog(null, "Bạn có chắn chắc muốn thoát khỏi hệ thống?",
+                "Nhấn vào lựa chọn của bạn", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                null, options, options[0]);
+        return kq;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -182,6 +176,10 @@ public class BanGiamDoc extends javax.swing.JFrame implements ActionListener {
 
     public void bangLaiSuatListener(ActionListener listener){
         btnLaiSuat.addActionListener(listener);
+    }
+
+    public void logoutListener(ActionListener listener){
+        btnDangXuat.addActionListener(listener);
     }
 
     private javax.swing.JButton btnBaoCao;

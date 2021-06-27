@@ -92,18 +92,6 @@ public class KhachHang extends javax.swing.JFrame {
         btnDangXuat.setToolTipText("");
         btnDangXuat.setHorizontalAlignment(SwingConstants.LEFT);
         btnDangXuat.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnDangXuat.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jpnView.removeAll();
-                String[] options = {"Chắc chắn", "Huỷ"};
-                int kq = JOptionPane.showOptionDialog(null, "Bạn có chắn chắc muốn thoát khỏi hệ thống?",
-                        "Nhấn vào lựa chọn của bạn", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                        null, options, options[0]);
-                if (kq == 0) {
-                    System.exit(0);
-                }
-            }
-        });
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -183,6 +171,14 @@ public class KhachHang extends javax.swing.JFrame {
         jpnView.validate();
         jpnView.repaint();
     }
+    public int logout(){
+        jpnView.removeAll();
+        String[] options = {"Chắc chắn", "Huỷ"};
+        int kq = JOptionPane.showOptionDialog(null, "Bạn có chắn chắc muốn thoát khỏi hệ thống?",
+                "Nhấn vào lựa chọn của bạn", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                null, options, options[0]);
+        return kq;
+    }
 
     public void getTTCNListener(ActionListener listener){
         btnTTCN.addActionListener(listener);
@@ -198,6 +194,10 @@ public class KhachHang extends javax.swing.JFrame {
 
     public void bangLaiSuatListener(ActionListener listener){
         btnLaiSuat.addActionListener(listener);
+    }
+
+    public void logoutListener(ActionListener listener){
+        btnDangXuat.addActionListener(listener);
     }
 
     private javax.swing.JButton btnQLSo;

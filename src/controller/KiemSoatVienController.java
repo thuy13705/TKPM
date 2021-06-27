@@ -1,9 +1,7 @@
 package controller;
 
 import model.pojo.NguoiDung;
-import ui.BangLaiSuat;
-import ui.KiemSoatVien;
-import ui.ThongTinCaNhan;
+import ui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +16,7 @@ public class KiemSoatVienController {
         kiemSoatVienView.qLDuyetSo(new QLDSListener());
         kiemSoatVienView.qLPhongToa(new QLPTListener());
         kiemSoatVienView.bangLaiSuatListener(new LSListener());
+        kiemSoatVienView.logoutListener(new LogoutListener());
     }
 
     public void showKiemSoatVienView(){
@@ -54,8 +53,22 @@ public class KiemSoatVienController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            BangLaiSuat bangLaiSuat=new BangLaiSuat();
-            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+            QuyDinhLaiSuat quyDinhLaiSuat=new QuyDinhLaiSuat();
+            QDLSController qdlsController=new QDLSController(quyDinhLaiSuat);
+            kiemSoatVienView.showPanel(quyDinhLaiSuat);
+        }
+    }
+    class LogoutListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int kq=kiemSoatVienView.logout();
+            if (kq==0){
+                kiemSoatVienView.setVisible(false);
+                Login login=new Login();
+                LoginController loginController=new LoginController(login);
+                loginController.showLoginView();
+            }
         }
     }
 }

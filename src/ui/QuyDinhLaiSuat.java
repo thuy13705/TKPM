@@ -176,7 +176,7 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
                 bangThamSo.setGiaTri(txtGiaTri.getText());
             }
             else
-                showMessage("Lãi suất không được trống.");
+                showMessage("Nội dung không được trống.");
         }
         return bangThamSo;
     }
@@ -195,7 +195,7 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
                 bangThamSo=new BangThamSo(txtTen.getText(),"",txtGiaTri.getText(),true);
             }
             else
-                showMessage("Tên/Loại/Lãi suất không được trống.");
+                showMessage("Tên/Nội dung không được trống.");
         }
         return bangThamSo;
     }
@@ -208,28 +208,80 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
         return kq;
     }
 
+    private boolean isValidateTen(String ten){
+        if (ten.equals("")){
+            showMessage("Tên không được trống");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidateTH(String th){
+        if(th == null || th.equals("")) {
+            showMessage("Thời hạn loại sổ tiết kiệm không được rỗng");
+            return false;
+        }
+        else {
+            if (th.length()==1 || th.length()==2){
+                try {
+                    int aLong = Integer.parseInt(th);
+                    return true;
+                } catch (NumberFormatException e) {
+                    showMessage("Thời hạn loại sổ tiết kiệm chỉ chứa số.");
+                }
+            }
+            else{
+                showMessage("Thời hạn loại sổ tiết kiệm chỉ chứa 1 hoặc 2 số");
+            }
+        }
+        return false;
+    }
+
+    private boolean isValidateLS(String ls){
+        if(ls == null || ls.equals("")) {
+            showMessage("Lãi suất không được rỗng");
+            return false;
+        }
+        else {
+            if (ls.indexOf(".")==1 || ls.indexOf(".")==2){
+                try {
+                    Double so = Double.parseDouble(ls);
+                    return true;
+                } catch (NumberFormatException e) {
+                    showMessage("Nhập Lãi suất chưa chính xác");
+                }
+            }
+            else{
+                showMessage("Nhập Lãi suất chưa chính xác");
+            }
+        }
+        return false;
+    }
+
+
     public void showBangLaiSuat(List<LoaiSTK> list){
-        Object[][]objects=new Object[list.size()][5];
+        Object[][]objects=new Object[list.size()][6];
 
         for (int i=0; i<list.size();i++){
             objects[i][0]=i+1;
-            objects[i][1]=list.get(i).getThoiHan();
-            objects[i][2]=list.get(i).getTenLoai();
-            objects[i][3]=list.get(i).getLaiSuat();
+            objects[i][1]=list.get(i).getLoaiSo();
+            objects[i][2]=list.get(i).getThoiHan();
+            objects[i][3]=list.get(i).getTenLoai();
+            objects[i][4]=list.get(i).getLaiSuat();
             if (list.get(i).getTinhTrang()==0)
-                objects[i][4]="Hoạt động";
+                objects[i][5]="Hoạt động";
             else
-                objects[i][4]="Bị Khoá";
+                objects[i][5]="Bị Khoá";
         }
 
         tableLS.setModel(new javax.swing.table.DefaultTableModel(objects
                 ,
                 new String [] {
-                        "STT","Thời hạn", "Tên loại sổ tiết kiệm", "Lãi suất","Tình Trạng"
+                        "STT","Mã loại sổ","Thời hạn", "Tên loại sổ tiết kiệm", "Lãi suất","Tình Trạng"
                 }
         ) {
             boolean[] canEdit = new boolean [] {
-                    false, false, false,false,false
+                    false, false, false,false,false,false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -247,11 +299,11 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
         int option = JOptionPane.showConfirmDialog(null, inputFields, "Sửa lãi suất tiết kiệm", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
         if (option == JOptionPane.OK_OPTION) {
-            if (!txtLaiSuat.getText().equals("") ){
+            if (isValidateLS(txtLaiSuat.getText()) ){
                 loaiSTK.setLaiSuat(Double.parseDouble(txtLaiSuat.getText()));
             }
             else
-                showMessage("Lãi suất không được trống.");
+                return null;
         }
         return loaiSTK;
     }
@@ -267,16 +319,11 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
         int option = JOptionPane.showConfirmDialog(null, inputFields, "Thêm lãi suất tiết kiệm", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
         if (option == JOptionPane.OK_OPTION) {
-            if (!txtLaiSuat.getText().equals("") && !txtThoiHan.getText().equals("") && !txtTen.getText().equals("") ){
-                LoaiSTK stk= LoaiSTKDAO.laySTKID(Integer.valueOf(txtThoiHan.getText()));
-                if (stk!=null)
-                    showMessage("Loai Sổ tiết kiệm đã tồn tại");
-                else{
-                    loaiSTK=new LoaiSTK(Integer.valueOf(txtThoiHan.getText()),txtTen.getText(),Double.parseDouble(txtLaiSuat.getText()),0);
-                }
+            if (isValidateTen(txtTen.getText()) && isValidateLS(txtLaiSuat.getText()) && isValidateTH(txtThoiHan.getText()) ){
+                loaiSTK=new LoaiSTK(Integer.valueOf(txtThoiHan.getText()),txtTen.getText(),Double.parseDouble(txtLaiSuat.getText()),0);
             }
             else
-                showMessage("Tên/Loại/Lãi suất không được trống.");
+                return null;
         }
         return loaiSTK;
     }

@@ -18,6 +18,7 @@ public class KhachHangController {
         khachHangView.getQLSoListener(new QLSoListener());
         khachHangView.getQLSoDaTTListener(new QLSoDaTTListener());
         khachHangView.bangLaiSuatListener(new LSListener());
+        khachHangView.logoutListener(new LogoutListener());
     }
 
     public void showKhachHangView(){
@@ -58,10 +59,23 @@ public class KhachHangController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            BangLaiSuat bangLaiSuat=new BangLaiSuat();
-            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
-            khachHangView.showPanel(bangLaiSuat);
+            QuyDinhLaiSuat quyDinhLaiSuat=new QuyDinhLaiSuat();
+            QDLSController qdlsController=new QDLSController(quyDinhLaiSuat);
+            khachHangView.showPanel(quyDinhLaiSuat);
         }
     }
 
+    class LogoutListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int kq=khachHangView.logout();
+            if (kq==0){
+                khachHangView.setVisible(false);
+                Login login=new Login();
+                LoginController loginController=new LoginController(login);
+                loginController.showLoginView();
+            }
+        }
+    }
 }

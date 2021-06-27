@@ -29,6 +29,23 @@ public class LoaiSTKDAO {
         return ds;
     }
 
+    public static List<LoaiSTK> layDSLoaiSTKHD(){
+        List<LoaiSTK> ds=null;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+            String hql = "from LoaiSTK where tinhTrang=0";
+            Query query = session.createQuery(hql);
+            ds = (List<LoaiSTK>) ((org.hibernate.query.Query<?>) query).list();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds;
+    }
+
     public static LoaiSTK laySTKID(int id) {
         LoaiSTK loaiSTK = null;
         Session session = HibernateUtil.getSessionFactory()

@@ -30,6 +30,23 @@ public class ThamSoDAO {
         return ds;
     }
 
+    public static List<BangThamSo> layDSThamSoHD(){
+        List<BangThamSo> ds=null;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+            String hql = "from BangThamSo where tinhTrang=true";
+            Query query = session.createQuery(hql);
+            ds = (List<BangThamSo>) ((org.hibernate.query.Query<?>) query).list();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds;
+    }
+
     public static BangThamSo layThamSoID(int id) {
         BangThamSo bangThamSo = null;
         Session session = HibernateUtil.getSessionFactory()

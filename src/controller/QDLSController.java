@@ -44,7 +44,7 @@ public class QDLSController {
                     quyDinhLaiSuat.showMessage("Thêm thất bại");
             }
             else
-                quyDinhLaiSuat.showMessage("Loại LS không tồn tại.");
+                quyDinhLaiSuat.showMessage("Thêm thất bại.");
         }
     }
 
@@ -53,12 +53,16 @@ public class QDLSController {
         public void actionPerformed(ActionEvent e) {
             LoaiSTK loaiSTK=quyDinhLaiSuat.layLS();
             if (loaiSTK!=null){
-                loaiSTK=quyDinhLaiSuat.suaLaiSuat(loaiSTK);
-                boolean check=LoaiSTKDAO.capNhatLoai(loaiSTK);
-                if (check==true){
-                    List<LoaiSTK> list=LoaiSTKDAO.layDSLoaiSTK();
-                    quyDinhLaiSuat.showBangLaiSuat(list);
-                    quyDinhLaiSuat.showMessage("Cập nhật thành công.");
+                LoaiSTK loaiSTK1=quyDinhLaiSuat.suaLaiSuat(loaiSTK);
+                if (loaiSTK1!=null){
+                    boolean check=LoaiSTKDAO.capNhatLoai(loaiSTK1);
+                    if (check==true){
+                        List<LoaiSTK> list=LoaiSTKDAO.layDSLoaiSTK();
+                        quyDinhLaiSuat.showBangLaiSuat(list);
+                        quyDinhLaiSuat.showMessage("Cập nhật thành công.");
+                    }
+                    else
+                        quyDinhLaiSuat.showMessage("Cập nhật thất bại");
                 }
                 else
                     quyDinhLaiSuat.showMessage("Cập nhật thất bại");

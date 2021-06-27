@@ -15,6 +15,7 @@ public class AdminController {
         adminView.getTTCNListener(new TTCNListener());
         adminView.qlngListener(new QLNDListener());
         adminView.bangLSListener(new LSListener());
+        adminView.logoutListener(new LogoutListener());
     }
 
     public void showAdminView(){
@@ -47,6 +48,20 @@ public class AdminController {
             BangLaiSuat bangLaiSuat=new BangLaiSuat();
             BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
             adminView.showPanel(bangLaiSuat);
+        }
+    }
+
+    class LogoutListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int kq=adminView.logout();
+            if (kq==0){
+                adminView.setVisible(false);
+                Login login=new Login();
+                LoginController loginController=new LoginController(login);
+                loginController.showLoginView();
+            }
         }
     }
 }

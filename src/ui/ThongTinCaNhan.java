@@ -158,33 +158,60 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
         txtCMND.setText(nguoiDung.getCmnd());
         txtDiaChi.setText(nguoiDung.getDiaChi());
     }
-    private boolean isValidateTen(){
-        if (txtTen.getText().equals("")){
-            showMessage("Tên không được trống.");
+    private boolean isValidateTen(String ten){
+        if (ten.equals("")){
+            showMessage("Tên không được trống");
             return false;
         }
         return true;
     }
 
-    private boolean isValidateCMND(){
-        if (txtCMND.getText().equals("")){
-            showMessage("CMND/CCCD không được trống.");
+    private boolean isValidateCMND(String cmnd){
+        if(cmnd == null || cmnd.equals("")) {
+            showMessage("CMND/CCCD không được rỗng");
             return false;
         }
-        return true;
+        else {
+            if (cmnd.length()==9 || cmnd.length()==12){
+                try {
+                    long aLong = Long.parseLong(cmnd);
+                    return true;
+                } catch (NumberFormatException e) {
+                    showMessage("CMND/CCCD chỉ chứa số.");
+                }
+            }
+            else{
+                showMessage("CMND/CCCD chỉ chứa 9 hoặc 12 số");
+            }
+        }
+        return false;
     }
 
-    private boolean isValidateSDT(){
-        if (txtSDT.getText().equals("")){
-            showMessage("SĐT không được trống.");
+    private boolean isValidateSDT(String sdt){
+        if(sdt == null || sdt.equals("")) {
+            showMessage("SĐT không được rỗng");
             return false;
         }
-        return true;
+        else {
+            if (sdt.length()==10){
+                try {
+                    long aLong = Long.parseLong(sdt);
+                    return true;
+                } catch (NumberFormatException e) {
+                    showMessage("SĐT chỉ chứa số.");
+                }
+            }
+            else{
+                showMessage("SĐT chỉ chứa 10 số");
+            }
+        }
+        return false;
     }
+
 
     public NguoiDung getND(){
         NguoiDung nguoiDung=null;
-        if (isValidateTen()==true & isValidateCMND()==true && isValidateSDT()==true){
+        if (isValidateTen(txtTen.getText()) && isValidateCMND(txtCMND.getText()) && isValidateSDT(txtSDT.getText())){
             nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText());
         }
         return nguoiDung;
