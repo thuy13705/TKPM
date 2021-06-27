@@ -213,7 +213,7 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
 
         for (int i=0; i<list.size();i++){
             objects[i][0]=i+1;
-            objects[i][1]=list.get(i).getLoaiSo();
+            objects[i][1]=list.get(i).getThoiHan();
             objects[i][2]=list.get(i).getTenLoai();
             objects[i][3]=list.get(i).getLaiSuat();
             if (list.get(i).getTinhTrang()==0)
@@ -225,7 +225,7 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
         tableLS.setModel(new javax.swing.table.DefaultTableModel(objects
                 ,
                 new String [] {
-                        "STT","Loại", "Tên loại sổ tiết kiệm", "Lãi suất","Tình Trạng"
+                        "STT","Thời hạn", "Tên loại sổ tiết kiệm", "Lãi suất","Tình Trạng"
                 }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -259,20 +259,20 @@ public class QuyDinhLaiSuat extends javax.swing.JPanel implements ActionListener
     public LoaiSTK themLaiSuat(){
         LoaiSTK loaiSTK=null;
         JTextField txtLaiSuat=new JTextField();
-        JTextField txtLoai=new JTextField();
+        JTextField txtThoiHan=new JTextField();
         JTextField txtTen=new JTextField();
 
-        Object[] inputFields = {"Loai", txtLoai,"Tên Loại", txtTen,"Lãi suất", txtLaiSuat};
+        Object[] inputFields = {"Thời hạn", txtThoiHan,"Tên Loại", txtTen,"Lãi suất", txtLaiSuat};
 
         int option = JOptionPane.showConfirmDialog(null, inputFields, "Thêm lãi suất tiết kiệm", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
         if (option == JOptionPane.OK_OPTION) {
-            if (!txtLaiSuat.getText().equals("") && !txtLoai.getText().equals("") && !txtTen.getText().equals("") ){
-                LoaiSTK stk= LoaiSTKDAO.laySTKID(Integer.valueOf(txtLoai.getText()));
+            if (!txtLaiSuat.getText().equals("") && !txtThoiHan.getText().equals("") && !txtTen.getText().equals("") ){
+                LoaiSTK stk= LoaiSTKDAO.laySTKID(Integer.valueOf(txtThoiHan.getText()));
                 if (stk!=null)
                     showMessage("Loai Sổ tiết kiệm đã tồn tại");
                 else{
-                    loaiSTK=new LoaiSTK(Integer.valueOf(txtLoai.getText()),txtTen.getText(),Double.parseDouble(txtLaiSuat.getText()),0);
+                    loaiSTK=new LoaiSTK(Integer.valueOf(txtThoiHan.getText()),txtTen.getText(),Double.parseDouble(txtLaiSuat.getText()),0);
                 }
             }
             else

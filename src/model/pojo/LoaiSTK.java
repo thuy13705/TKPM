@@ -28,8 +28,8 @@ public class LoaiSTK {
         this.tinhTrang = tinhTrang;
     }
 
-    public LoaiSTK(int loaiSo, String tenLoai, double laiSuat, Integer tinhTrang) {
-        this.loaiSo = loaiSo;
+    public LoaiSTK(int thoiHan, String tenLoai, double laiSuat, Integer tinhTrang) {
+        this.thoiHan = thoiHan;
         this.tenLoai = tenLoai;
         this.laiSuat = laiSuat;
         this.tinhTrang = tinhTrang;
