@@ -77,7 +77,7 @@ public class KhachHang extends javax.swing.JFrame {
         btnLaiSuat.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnLaiSuat.setForeground(new Color(255, 255, 255));
         btnLaiSuat.setIcon(new ImageIcon(getClass().getResource("/image/icon/bell.png"))); // NOI18N
-        btnLaiSuat.setText("Thông báo");
+        btnLaiSuat.setText("Lãi suất và Quy định");
         btnLaiSuat.setToolTipText("");
         btnLaiSuat.setHorizontalAlignment(SwingConstants.LEFT);
         btnLaiSuat.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -195,6 +195,7 @@ public class KhachHang extends javax.swing.JFrame {
     public void getQLSoDaTTListener(ActionListener listener){
         btnLichSu.addActionListener(listener);
     }
+
     public void bangLaiSuatListener(ActionListener listener){
         btnLaiSuat.addActionListener(listener);
     }

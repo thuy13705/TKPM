@@ -63,6 +63,7 @@ public class KhachHangController {
         public void actionPerformed(ActionEvent e) {
             BangLaiSuat bangLaiSuat=new BangLaiSuat();
             BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+            khachHangView.showPanel(bangLaiSuat);
         }
     }
 
