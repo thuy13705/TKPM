@@ -59,9 +59,9 @@ public class KhachHangController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            QuyDinhLaiSuat quyDinhLaiSuat=new QuyDinhLaiSuat();
-            QDLSController qdlsController=new QDLSController(quyDinhLaiSuat);
-            khachHangView.showPanel(quyDinhLaiSuat);
+            BangLaiSuat bangLaiSuat=new BangLaiSuat();
+            BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+            khachHangView.showPanel(bangLaiSuat);
         }
     }
 

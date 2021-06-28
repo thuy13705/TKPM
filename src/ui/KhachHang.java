@@ -65,7 +65,7 @@ public class KhachHang extends javax.swing.JFrame {
         btnLichSu.setFont(new Font("Lucida Grande", 1, 14)); // NOI18N
         btnLichSu.setForeground(new Color(255, 255, 255));
         btnLichSu.setIcon(new ImageIcon(getClass().getResource("/image/icon/history.png"))); // NOI18N
-        btnLichSu.setText("Quản lý sổ tiết kiệm");
+        btnLichSu.setText("Lịch sử");
         btnLichSu.setToolTipText("");
         btnLichSu.setHorizontalAlignment(SwingConstants.LEFT);
         btnLichSu.setHorizontalTextPosition(SwingConstants.RIGHT);
