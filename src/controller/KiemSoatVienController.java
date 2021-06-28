@@ -16,6 +16,7 @@ public class KiemSoatVienController {
         kiemSoatVienView.qLDuyetSo(new QLDSListener());
         kiemSoatVienView.qLPhongToa(new QLPTListener());
         kiemSoatVienView.bangLaiSuatListener(new LSListener());
+        kiemSoatVienView.logoutListener(new LogoutListener());
     }
 
     public void showKiemSoatVienView(){
@@ -57,6 +58,21 @@ public class KiemSoatVienController {
         public void actionPerformed(ActionEvent e) {
             BangLaiSuat bangLaiSuat=new BangLaiSuat();
             BangLaiSuatController bangLaiSuatController=new BangLaiSuatController(bangLaiSuat);
+            kiemSoatVienView.showPanel(bangLaiSuat);
+        }
+    }
+
+    class LogoutListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int kq=kiemSoatVienView.logout();
+            if (kq==0){
+                kiemSoatVienView.setVisible(false);
+                Login login=new Login();
+                LoginController loginController=new LoginController(login);
+                loginController.showLoginView();
+            }
         }
     }
 }

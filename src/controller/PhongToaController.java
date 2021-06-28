@@ -29,7 +29,7 @@ public class PhongToaController {
             List<Integer> ma = phongToaSoView.getSelectedRow();
             for (int i = 0; i < ma.size(); i++) {
                 soTietKiem = SoTietKiemDAO.laySTKID(ma.get(i));
-                soTietKiem.setTinhTrang(2);
+                soTietKiem.setTinhTrang(3);
                 boolean check = SoTietKiemDAO.capNhatSTK(soTietKiem);
                 if (check == false) {
                     phongToaSoView.showMessage("Phong toả sổ thất bại");

@@ -1,6 +1,7 @@
 package model.pojo;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class NguoiDung {
     private String email;
     private Integer tinhTrang;
     private BigDecimal soDu;
-    private Set<SoTietKiem> soTKs;
+    private Set<SoTietKiem> soTKs=new HashSet<>(0);
     private Set<PhieuGiaoDich> nguoiGDs;
 
     public Set<PhieuGiaoDich> getNguoiGDs() {

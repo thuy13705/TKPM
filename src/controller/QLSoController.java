@@ -37,20 +37,7 @@ public class QLSoController {
         quanLySoTietKiemView.getTTSoListener(new QLSoController.TTSoListener());
         quanLySoTietKiemView.getTimKiemListener(new QLSoController.TimKiemListener());
         quanLySoTietKiemView.showNguoiDung(nguoiDung);
-        List<SoTietKiem> list = new ArrayList<SoTietKiem>();
-        Iterator<SoTietKiem> list1 = nguoiDung.getSoTKs().iterator();
-        while (list1.hasNext()) {
-            {
-                SoTietKiem soTietKiem = list1.next();
-                if (soTietKiem.getTinhTrang() == 1) {
-                    if (soTietKiem.getPhieuGDs().size() == 1) {
-
-                        list.add(soTietKiem);
-
-                    }
-                }
-            }
-        }
+        List<SoTietKiem> list =SoTietKiemDAO.layDSSTKHD(nguoiDung);
         quanLySoTietKiemView.showDS(list);
 
     }
@@ -91,13 +78,9 @@ public class QLSoController {
                 int maSo = Integer.parseInt(ma);
                 SoTietKiem soTietKiem = SoTietKiemDAO.laySTKID(maSo);
                 if (soTietKiem != null) {
-                    if (soTietKiem.getTinhTrang() == 1)
+                    if (soTietKiem.getTinhTrang() == 2)
                         if (soTietKiem.getMaND().equals(nguoiDung)) {
-                            if (soTietKiem.getPhieuGDs().size() == 1) {
-                                quanLySoTietKiemView.showTTSo(soTietKiem, TTDenHan(soTietKiem));
-                            } else {
-                                quanLySoTietKiemView.showMessage("Không tìm thấy sổ");
-                            }
+                            quanLySoTietKiemView.showTTSo(soTietKiem, TTDenHan(soTietKiem));
                         } else {
                             quanLySoTietKiemView.showMessage("Không tìm thấy sổ");
                         }
@@ -120,7 +103,7 @@ public class QLSoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             PhieuGui phieuGui = new PhieuGui(khachHangView);
-            PhieuGuiController phieuGuiController = new PhieuGuiController(nguoiDung, phieuGui);
+            PhieuGuiController phieuGuiController = new PhieuGuiController(nguoiDung, phieuGui,quanLySoTietKiemView);
             phieuGui.setVisible(true);
         }
     }
@@ -130,7 +113,7 @@ public class QLSoController {
         public void actionPerformed(ActionEvent e) {
             SoTietKiem soTietKiem = quanLySoTietKiemView.getSelectedRow();
             PhieuRut phieuRut = new PhieuRut(khachHangView);
-            PhieuRutController phieuDongController = new PhieuRutController(nguoiDung, soTietKiem, phieuRut);
+            PhieuRutController phieuDongController = new PhieuRutController(nguoiDung, soTietKiem, phieuRut,quanLySoTietKiemView);
             phieuRut.setVisible(true);
 
         }

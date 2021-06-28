@@ -24,18 +24,7 @@ public class QLSoDaTTController {
     public QLSoDaTTController(NguoiDung nguoiDung, DanhSachSoDaTT danhSachSoDaTTView) {
         this.nguoiDung = nguoiDung;
         this.danhSachSoDaTTView = danhSachSoDaTTView;
-        List<SoTietKiem> list = new ArrayList<SoTietKiem>();
-        Iterator<SoTietKiem> list1 = nguoiDung.getSoTKs().iterator();
-        while (list1.hasNext()) {
-            {
-                SoTietKiem soTietKiem = list1.next();
-                if (soTietKiem.getTinhTrang() == 1) {
-                    if (soTietKiem.getPhieuGDs().size() == 2) {
-                        list.add(soTietKiem);
-                    }
-                }
-            }
-        }
+        List<SoTietKiem> list = SoTietKiemDAO.layDSSTKTT(nguoiDung);
         danhSachSoDaTTView.showDS(list);
         danhSachSoDaTTView.getTTSoListener(new QLSoDaTTController.TTSoListener());
         danhSachSoDaTTView.getTimKiemListener(new QLSoDaTTController.TimKiemListener());

@@ -15,20 +15,20 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 public class PhieuGuiController {
+    QuanLySoTietKiem quanLySoTietKiem;
     private NguoiDung nguoiDung;
     PhieuGui phieuGuiView;
-    List<LoaiSTK> list = LoaiSTKDAO.layDSLoaiSTK();
 
-    public PhieuGuiController(NguoiDung nguoiDung, PhieuGui phieuGuiView) {
+    public PhieuGuiController(NguoiDung nguoiDung, PhieuGui phieuGuiView, QuanLySoTietKiem quanLySoTietKiem) {
         this.nguoiDung = nguoiDung;
         this.phieuGuiView = phieuGuiView;
+        this.quanLySoTietKiem=quanLySoTietKiem;
         phieuGuiView.show(nguoiDung);
+        List<LoaiSTK> list = LoaiSTKDAO.layDSLoaiSTKHD();
         phieuGuiView.showLoaiTK(list);
         phieuGuiView.xacNhanListener((ActionListener)new PhieuGuiController.xacNhanPhieuGuiListener());
 
@@ -38,6 +38,7 @@ public class PhieuGuiController {
     class xacNhanPhieuGuiListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            List<LoaiSTK> list = LoaiSTKDAO.layDSLoaiSTK();
             SoTietKiem soTietKiem = phieuGuiView.themPhieu(list);
             if (kiemTraSoTienGui(soTietKiem) == true) {
                 if (kiemTraSoDu(nguoiDung, soTietKiem.getSoTienGui()) == false) {
@@ -62,6 +63,9 @@ public class PhieuGuiController {
                                 phieuGuiView.showMessage("Không thể lập phiếu gửi");
                             }
                             phieuGuiView.showMessage("Mở sổ thành công, Sổ đã được thêm vào danh sách chờ duyệt");
+                            List<SoTietKiem> list1=SoTietKiemDAO.layDSSTKHD(nguoiDung);
+                            quanLySoTietKiem.showDS(list1);
+                            quanLySoTietKiem.capNhatSoDu(nguoiDung);
                             phieuGuiView.setVisible(false);
                         } else
                             phieuGuiView.showMessage("Mở sổ thất bại");

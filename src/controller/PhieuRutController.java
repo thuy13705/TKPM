@@ -2,6 +2,7 @@ package controller;
 
 import model.dao.NguoiDungDAO;
 import model.dao.PhieuGiaoDichDAO;
+import model.dao.SoTietKiemDAO;
 import model.pojo.NguoiDung;
 import model.pojo.PhieuGiaoDich;
 import model.pojo.SoTietKiem;
@@ -24,13 +25,14 @@ public class PhieuRutController {
     private SoTietKiem soTietKiem;
     BigDecimal soTien;
 
-    public PhieuRutController(NguoiDung nguoiDung, SoTietKiem soTietKiem, PhieuRut phieuRutView) {
+    public PhieuRutController(NguoiDung nguoiDung, SoTietKiem soTietKiem, PhieuRut phieuRutView, QuanLySoTietKiem quanLySoTietKiemView) {
+        this.quanLySoTietKiemView=quanLySoTietKiemView;
         this.nguoiDung = nguoiDung;
         this.soTietKiem = soTietKiem;
         this.phieuRutView = phieuRutView;
         tinhTong(soTietKiem);
         phieuRutView.show(soTietKiem, soTien);
-        phieuRutView.tatToanListener((ActionListener) new PhieuRutController.tatToanPhieuRutListener());
+        phieuRutView.tatToanListener(new tatToanPhieuRutListener());
 
     }
 
@@ -75,15 +77,16 @@ public class PhieuRutController {
                     phieuRut.setSoTien(soTien);
                     boolean check = PhieuGiaoDichDAO.themPhieu(phieuRut);
                     if (check == true) {
-
                         phieuRutView.showMessage("Tất toán sổ thành công.");
                         nguoiDung.setSoDu(soTietKiem.getMaND().getSoDu().add( soTien));
+                        soTietKiem.setTinhTrang(2);
+                        SoTietKiemDAO.capNhatSTK(soTietKiem);
                         NguoiDungDAO.capNhatND(nguoiDung);
-                        phieuRutView.setVisible(false);
-                        List<SoTietKiem> list = new ArrayList<>();
-                        Iterator<SoTietKiem> list1 = nguoiDung.getSoTKs().iterator();
-                        System.out.println(nguoiDung.getMaNd());
 
+                        List<SoTietKiem> list =SoTietKiemDAO.layDSSTKHD(nguoiDung);
+                        quanLySoTietKiemView.showDS(list);
+                        quanLySoTietKiemView.capNhatSoDu(nguoiDung);
+                        phieuRutView.setVisible(false);
                     } else
                         phieuRutView.showMessage("Tất toán sổ thất bại");
                 } else

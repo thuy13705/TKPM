@@ -23,7 +23,6 @@ public class QDLSController {
         quyDinhLaiSuat.themLSListener(new themLSListener());
         quyDinhLaiSuat.suaLSListener(new suaLSListener());
         quyDinhLaiSuat.khoaLSListener(new khoaLSListener());
-        
         quyDinhLaiSuat.themQDListener(new themQDListener());
         quyDinhLaiSuat.suaQDListener(new suaQDListener());
         quyDinhLaiSuat.khoaQDListener(new khoaQDListener());

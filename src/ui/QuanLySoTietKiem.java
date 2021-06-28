@@ -302,6 +302,10 @@ public class QuanLySoTietKiem extends javax.swing.JPanel implements ActionListen
         txtTong.setText(list.get(1));
     }
 
+    public void capNhatSoDu(NguoiDung nguoiDung){
+        jlbSoDu.setText(nguoiDung.getSoDu().toString());
+    }
+
     public void showDS(List<SoTietKiem> list){
         Object[][]objects=new Object[list.size()][4];
 

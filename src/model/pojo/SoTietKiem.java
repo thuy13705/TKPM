@@ -2,6 +2,7 @@ package model.pojo;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class SoTietKiem {
     private BigDecimal soTienGui;
     private LoaiSTK loaiSo;
     private NguoiDung maND;
-    private Set<PhieuGiaoDich> phieuGDs;
+    private Set<PhieuGiaoDich> phieuGDs=new HashSet<>(0);
     private Integer tinhTrang;
 
     public Integer getTinhTrang() {

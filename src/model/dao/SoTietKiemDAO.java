@@ -30,12 +30,30 @@ public class SoTietKiemDAO {
         return ds;
     }
 
-    public static List<SoTietKiem> layDSSTK(NguoiDung nguoiDung){
+    public static List<SoTietKiem> layDSSTKHD(NguoiDung nguoiDung){
         List<SoTietKiem> ds=null;
         SessionFactory factory= HibernateUtil.getSessionFactory();
         Session session=factory.openSession();
         try {
-            String hql = "from SoTietKiem where maND=:nguoiDung";
+            String hql = "from SoTietKiem where maND=:nguoiDung and tinhTrang=1";
+            Query query = session.createQuery(hql);
+            query.setParameter("nguoiDung",nguoiDung);
+            ds = (List<SoTietKiem>) ((org.hibernate.query.Query<?>) query).list();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds;
+    }
+
+    public static List<SoTietKiem> layDSSTKTT(NguoiDung nguoiDung){
+        List<SoTietKiem> ds=null;
+        SessionFactory factory= HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        try {
+            String hql = "from SoTietKiem where maND=:nguoiDung and tinhTrang=2";
             Query query = session.createQuery(hql);
             query.setParameter("nguoiDung",nguoiDung);
             ds = (List<SoTietKiem>) ((org.hibernate.query.Query<?>) query).list();
