@@ -32,6 +32,7 @@ public class TTCNController {
                 nguoiDung.setCmnd(nguoiDungEdit.getCmnd());
                 nguoiDung.setDiaChi(nguoiDungEdit.getDiaChi());
                 nguoiDung.setSdt(nguoiDungEdit.getSdt());
+                nguoiDung.setEmail(nguoiDungEdit.getEmail());
                 boolean check=NguoiDungDAO.capNhatND(nguoiDung);
                 if (check==true){
                     thongTinCaNhan.showMessage("Cập nhật thành công.");

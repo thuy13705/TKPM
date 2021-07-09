@@ -20,6 +20,7 @@ public class NguoiDung {
     private Set<SoTietKiem> soTKs=new HashSet<>(0);
     private Set<PhieuGiaoDich> nguoiGDs;
 
+
     public Set<PhieuGiaoDich> getNguoiGDs() {
         return nguoiGDs;
     }
@@ -133,14 +134,6 @@ public class NguoiDung {
         this.password = password;
     }
 
-
-    public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt) {
-        this.tenNd = tenNd;
-        this.diaChi = diaChi;
-        this.cmnd = cmnd;
-        this.sdt = sdt;
-    }
-
     public NguoiDung(String tenNd, String diaChi, String cmnd, String sdt,String email, String username, String password, int loaiNd,  BigDecimal soDu) {
         this.tenNd = tenNd;
         this.diaChi = diaChi;
@@ -152,6 +145,14 @@ public class NguoiDung {
         this.email = email;
         this.soDu = soDu;
         this.tinhTrang=0;
+    }
+
+    public NguoiDung(String tenNd, String diaChi,String email, String cmnd, String sdt) {
+        this.tenNd = tenNd;
+        this.diaChi = diaChi;
+        this.cmnd = cmnd;
+        this.sdt = sdt;
+        this.email = email;
     }
 
     @Override

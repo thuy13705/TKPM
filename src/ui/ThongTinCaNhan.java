@@ -157,6 +157,7 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
         txtSDT.setText(nguoiDung.getSdt());
         txtCMND.setText(nguoiDung.getCmnd());
         txtDiaChi.setText(nguoiDung.getDiaChi());
+        txtEmail.setText(nguoiDung.getEmail());
     }
     private boolean isValidateTen(String ten){
         if (ten.equals("")){
@@ -212,7 +213,7 @@ public class ThongTinCaNhan extends javax.swing.JPanel implements ActionListener
     public NguoiDung getND(){
         NguoiDung nguoiDung=null;
         if (isValidateTen(txtTen.getText()) && isValidateCMND(txtCMND.getText()) && isValidateSDT(txtSDT.getText())){
-            nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtCMND.getText(),txtSDT.getText());
+            nguoiDung=new NguoiDung(txtTen.getText(),txtDiaChi.getText(),txtEmail.getText(),txtCMND.getText(),txtSDT.getText());
         }
         return nguoiDung;
     }
