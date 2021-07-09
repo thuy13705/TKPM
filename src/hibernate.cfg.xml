@@ -8,6 +8,7 @@
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">root</property>
          <property name="connection.password">123456</property>
+        <property name="hibernate.current_session_context_class">thread</property>
         <mapping resource="BangThamSo.hbm.xml"/>
         <mapping resource="LoaiSTK.hbm.xml"/>
         <mapping resource="NguoiDung.hbm.xml"/>
